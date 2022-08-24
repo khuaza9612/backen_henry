@@ -1,0 +1,23 @@
+{
+	"name": "reto3juventic-json-server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"dev": "nodemon index.js"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bcrypt": "^5.0.1",
+		"cors": "^2.8.5",
+		"dotenv": "^10.0.0",
+		"express": "^4.18.1",
+		"jsonwebtoken": "^8.5.1",
+		"pg": "^8.7.3",
+		"pg-hstore": "^2.3.4",
+		"psql": "^0.0.1",
+		"sequelize": "^6.21.2"
+	}
+}

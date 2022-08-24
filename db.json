@@ -1,0 +1,192 @@
+{
+  "clients": [
+    {
+      "id": 1,
+      "name": "erica garcía",
+      "description": "Me encanta el restaurante, la comida y los precios!",
+      "img": "assets/img/portfolio/mujer1.jfif"
+    },
+    {
+      "id": 2,
+      "name": "valeria cardona",
+      "description": "Me encanta el restaurante, la comida y los precios!",
+      "img": "assets/img/portfolio/mujer2.jfif"
+    },
+    {
+      "id": 3,
+      "name": "carlos moras",
+      "description": "Mi hijo quedó feliz con sus grados, la mejor comida de todas",
+      "img": "assets/img/portfolio/hombre3.jfif"
+    },
+    {
+      "id": 4,
+      "name": "Natalia Giraldo",
+      "description": "Mi hijo quedó feliz con sus grados, la mejor comida de todas.",
+      "img": "assets/img/portfolio/mujer4.jfif"
+    }
+  ],
+  "team": [
+    {
+      "id": 1,
+      "name": "kevin huaza",
+      "description": "Jefe de la Empresa",
+      "img": "assets/img/fotoKevin.jfif"
+    },
+    {
+      "id": 2,
+      "name": "valentina pinzón",
+      "description": "Marketing Digital",
+      "img": "assets/img/fotoValen.jpg"
+    },
+    {
+      "id": 3,
+      "name": "juan david soto",
+      "description": "Ejecutivo Nómina",
+      "img": "assets/img/juan.jpeg"
+    },
+    {
+      "id": 4,
+      "name": "david vásquez",
+      "description": "Jefe de Cocina",
+      "img": "assets/img/fotoDavid.jfif"
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "name": "cena de amigos",
+      "description": "Celebra tú cena de amigos en una mesa para 5 personas, acompañado de una botella de vino",
+      "img": "assets/img/portfolio/imagen10.jfif"
+    },
+    {
+      "id": 2,
+      "name": "declaraciones",
+      "description": "¿No sabes cómo declararte? ¡Nosotros te ayudamos! Con la decoracion de una mesa doble, solo falta que te arriesgues a decir lo que sientes por esa persona.",
+      "img": "assets/img/portfolio/imagen12.jfif"
+    },
+    {
+      "id": 3,
+      "name": "despedidas",
+      "description": "Celebra toda clase de despedida, con una cena de amigos en una mesa para 5 personas acompañado de una botella de vino",
+      "img": "assets/img/portfolio/imagen11.jfif"
+    },
+    {
+      "id": 4,
+      "name": "fiesta infantil",
+      "description": "¿No sabes cómo celebrar la fiesta infantil? Tranquilo nosotros te ayudamos, te prestamos un restaurante con juegos ambientado 100% para niños",
+      "img": "assets/img/portfolio/imagen8.jfif"
+    },
+    {
+      "id": 5,
+      "name": "cumpleaños",
+      "description": "Celebra tus cumpleaños o los de tus amigos, con una cena de amigos en una mesa para 5 personas acompañado de una botella de vino",
+      "img": "assets/img/portfolio/imagen6.jfif"
+    },
+    {
+      "id": 6,
+      "name": "cena de grado",
+      "description": "Celebra tu grado con familiares y amigos en nuestras mesas para 5 personas acompañado de una botella de vino",
+      "img": "assets/img/portfolio/imagen5.jfif"
+    }
+  ],
+  "menu": [
+    {
+      "id": 1,
+      "name": "Pasta boloñesa",
+      "description": "Pasta con carne en cocción lenta, estofada en salsa napolitana, cocida con pomodoro y finas hierbas.",
+      "price": "19000",
+      "img": "assets/img/portfolio/pastabola.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Canelones Ragu",
+      "description": "Láminas de pasta artesanal rellenas con carne de res en cocción lenta y pomodoro, gratinadas con mozzarella.",
+      "price": "12000",
+      "img": "assets/img/portfolio/canelones.png"
+    },
+    {
+      "id": 3,
+      "name": "Pasta con camarones",
+      "description": "En salsa blanca con camarones salteados, tocineta y cebollín acompañado de pan.",
+      "price": 25000,
+      "img": "assets/img/portfolio/pastaca.png"
+    },
+    {
+      "id": 4,
+      "name": "Galleta con helado",
+      "description": "Galleta recién salida del horno, con cubos crocantes de chocolate y nuez pecán, acompañada de gelato vainilla.",
+      "price": "5000",
+      "img": "assets/img/portfolio/Galleta.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Tres leches",
+      "description": "Esponjoso bizcochuelo bañado en tres leches, cubierto con una nube de merengue italiano y chocolate.",
+      "price": "7000",
+      "img": "assets/img/portfolio/postres.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Lasaña ragu",
+      "description": "Láminas de pasta artesanal rellenas con carne de res en cocción lenta y pomodoro, gratinadas con mozzarella.",
+      "price": "21000",
+      "img": "assets/img/portfolio/lasagnaragu.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Lasaña Veggie Bolañesa",
+      "description": "Elaboradas con láminas de pasta artesanal con carne veggie con pan de oliva y al gusto parmesano.",
+      "price": "18000",
+      "img": "assets/img/portfolio/lasana.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Pasta Gratinada Carbonara Camarones",
+      "description": "Pasta penne gratinada con camarones salteados, tocineta y cebollín.",
+      "price": "26000",
+      "img": "assets/img/portfolio/pastagra.png"
+    },
+    {
+      "id": 9,
+      "name": "Pasta Gratinada Ragu",
+      "description": "Pasta penne gratinada con carne de res en cocción lenta y pomodoro, con un toque de salsa blanca, pan al gusto",
+      "price": "22000",
+      "img": "assets/img/portfolio/pastaragu.png"
+    },
+    {
+      "id": 10,
+      "name": "Pasta Gratinada Polpette",
+      "description": "En pasta penne con albóndigas cocidas lentamente y salsa napolitana, gratinada, con pan de ajo al gusto.",
+      "price": "19000",
+      "img": "assets/img/portfolio/pastaporlpette.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Combinado Sorrento Cacio e Pepe",
+      "description": "Pollo pernil al horno cocinado lentamente en especias + Spaghetti cacio e pepe + ensalada de la casa y pan de ajo.",
+      "price": "17000",
+      "img": "assets/img/portfolio/combinadoso.png"
+    },
+    {
+      "id": 12,
+      "name": "Combinado Sorrento",
+      "description": "Pollo pernil al horno en especias + Papas gratinadas , pesto, crema y parmesano + Ensalada de la casas.",
+      "price": "24000",
+      "img": "assets/img/portfolio/combinadososo.png"
+    },
+    {
+      "name": "Hamburguesa",
+      "description": "Tres carnes super grande",
+      "price": "14000",
+      "img": "https://d1uz88p17r663j.cloudfront.net/original/8689e8d974203563ddcc9bbff91323c2_MG_CHORIZOBURGER_Main-880x660.png",
+      "id": 14
+    },
+    {
+      "name": "alitas bbq",
+      "description": "Deliciosas y Crujientes",
+      "price": "12000",
+      "img": "https://es.cravingsjournal.com/wp-content/uploads/2019/11/alitas-bbq-6-320x321.jpg",
+      "id": 15
+    }
+  ]
+}
