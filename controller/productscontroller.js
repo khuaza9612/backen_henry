@@ -72,16 +72,24 @@ const putproduct = async (req, res) => {
     }
 }
 const productname = async (req, res) => {
-    const { nombre } = req.params;
-    if(nombre){
-        let proName=await dogsTotal.filter(el=>el.nombre.toLowerCase().includes(nombre.toLowerCase()));// poner lo que filtre en minuscula
-        proName.length?
-        res.status(200).send(proName):
-        res.status(404).send('No hay perros con ese nombre');
-}else{
-    res.status(200).send(dogsTotal);
+    try {
+        const { name } = req.params;
+        const product = await Product.findAll({
+            where: {
+                nombre: {
+                    [Op.like]: `%${name}%`
+                }
+            }
+        });
+        if (!name || !product) {
+            return res.status(400).json({ msg: 'No se ha especificado el nombre o Producto no econtrado' });
+        }
+        res.status(200).json(product);
+    } catch (error) {
+        res.status(500).json(error);
+    }
 }
-}
+   
 
     
     

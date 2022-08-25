@@ -7,6 +7,8 @@ const router = Router();
 const {getalluser,getUser,deleteUser,postUser,putUser}=require('../controller/usercontroller.js');
 
 const verifyToken=require('../middlewares/authenticate');
+const verifyToken2=require('../middlewares/authenticate');
+
 
 // ruta para obtener todos los usuarios
 router.get('/user',verifyToken.ensureAuth,getalluser);
@@ -16,7 +18,7 @@ router.get('/user/:id',verifyToken.ensureAuth,getUser);
 router.delete('/user/:id',verifyToken.ensureAuth,deleteUser);
 // ruta para crear un usuario
 router.post('/user',postUser)
-// ruta para actualizar un usuario
+// CAMBIAR ROL DE USUARIO
 router.put('/user/:id',verifyToken.ensureAuth,putUser);
 
 

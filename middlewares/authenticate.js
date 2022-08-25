@@ -13,13 +13,11 @@ const JWT_SECRET = '23k4!jhisd&jhf8*asfdasdf$dsf45%&t';
     next();
 
 };
-const restrictTo = (...roles) => {
-  return (req, res, next) => {
-    if (!roles.includes(req.user.rol)) {
-      return next(new AppError('No tienes permisos para realizar esta acción', 403));
-    }
-    next();
-  };
+const restrictTo = (req, res, nex) => {
+  if (req.user.id === req.params.id||req.user.rol === 'admin') {
+    return res.status(401).json({ msg: 'No tienes permisos para realizar esta acción' });
+  }
+  next(); // si es admin, seguir
 };
 module.exports = {
   ensureAuth,restrictTo
