@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const { Router } = require('express');
+
  const getalluser=async(req,res)=>{
     const user = await User.findAll();
     res.json(user);
@@ -8,7 +9,7 @@ const { Router } = require('express');
     const { id } = req.params;
     const user = await User.findByPk(id);
     if (!id || !user) {
-      return next(new AppError('No se ha especificado el id o Usuario no econtrado', 400));
+      return next ('No se ha especificado el id o Usuario no econtrado', 400);
     }
     res.status(200).json(user);
   };
@@ -26,9 +27,9 @@ const { Router } = require('express');
     const { nombre, apellidos, email, password, confirmarPassword } = req.body;
   const user = await User.findOne({ where: { email } });
   if (user) {
-    return next(new AppError('El usario ya existe', 400));
+    return next ('El usario ya existe', 400);
   } else if (!comparePass(password, confirmarPassword)) {
-    return next(new AppError('Las contraseñas no coinciden', 400));
+    return next('Las contraseñas no coinciden', 400);
   }
 
   const newUser = await User.create({
