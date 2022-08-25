@@ -5,8 +5,6 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const router = Router();
 const {login}=require('../controller/authcontroller.js');
-
-const verifyToken=require('../middlewares/authenticate.js');
-
+// ruta para haver login
 router.post('/login',login);
 module.exports = router;
