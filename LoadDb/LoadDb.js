@@ -1,6 +1,5 @@
 const axios = require ('axios');
-const { Product } = require('../models/Product');
-const sequelize = require('sequelize')
+const { Product } = require('../db');
 
 async function LoadDb(req, res) {
   try {
@@ -21,7 +20,7 @@ async function LoadDb(req, res) {
         };
       });
       ProductModel.forEach(async (e) => {
-        await Product.Create({
+        await Product.findOrCreate({
           where: {
             id: e.id,
             title: e.title,

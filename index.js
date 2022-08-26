@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { config } = require('dotenv');
 const app = express();
-const  sequelize = require('./db');
+const { conn } = require('./db');
 const { LoadDb } = require('./LoadDb/LoadDb');
 
 config();
@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api', require('./routes'));
 
-sequelize.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   app.listen(3001, () => {
     LoadDb();
     console.log('✓ Se conectó a la base de datos');
