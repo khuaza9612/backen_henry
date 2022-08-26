@@ -4,32 +4,23 @@ const bcrypt = require('bcrypt');
 
 const User = require('../models/User');
 const router = Router();
-const {getalluser,getUser,deleteUser}=require('../controller/usercontroller.js');
+const {getalluser,getUser,deleteUser,postUser,putUser}=require('../controller/usercontroller.js');
 
 const verifyToken=require('../middlewares/authenticate');
+const verifyToken2=require('../middlewares/authenticate');
 
 
-router.get('/user',getalluser);
-router.get('/user/:id',getUser);
-router.delete('/user/:id',deleteUser);
+// ruta para obtener todos los usuarios    *
+router.get('/user',verifyToken.ensureAuth,getalluser);
+// ruta para obtener un usuario *
+router.get('/user/:id',verifyToken.ensureAuth,getUser);
+// ruta para eliminar un usuario*
+router.delete('/user/:id',verifyToken.ensureAuth,deleteUser);
+// ruta para crear un usuario *
+router.post('/user',postUser)
+// CAMBIAR ROL DE USUARIO
+router.put('/user/:id',verifyToken.ensureAuth,putUser);
 
-router.delete('/user/:id', async (req, res) => {
-  const user = await User.destroy({ where: { id: req.params.id } });
-  res.json("eliminado correctamente" + user);
-  
-});
-router.post('/user', async (req, res) => {
-  
-    const { nombre, apellidos, email, password, confirmarPassword, foto } = req.body;
-    const user = await User.findOne({ where: { email } });
-    if (user) {
-      return res.status(400).json({ msg: 'El usuario ya existe' });
-    // } else if (!comparePass(password, confirmarPassword)) {
-    //   return res.status(400).json({ msg: 'Las contraseñas no coinciden' });
-    }
-    const newUser = await User.create(req.body);
-    return res.json(newUser);   
-  });
 
 
 
