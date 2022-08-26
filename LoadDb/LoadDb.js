@@ -1,6 +1,5 @@
 const axios = require ('axios');
-const { Product } = require ('../models/Product');
-
+const { Product } = require('../db');
 
 async function LoadDb(req, res) {
   try {
