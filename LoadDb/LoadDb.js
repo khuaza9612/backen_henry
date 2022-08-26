@@ -13,6 +13,7 @@ async function LoadDb(req, res) {
           description: e.description,
           price: e.price,
           discount: e.discount,
+          image: e.image,
           status: e.status,
           stock: e.stock,
           genre: e.genre,
@@ -29,6 +30,7 @@ async function LoadDb(req, res) {
             price: e.price,
             discount: e.discount,
             status: e.status,
+            image: e.image,
             stock: e.stock,
             genre: e.genre,
             sport: e.sport
