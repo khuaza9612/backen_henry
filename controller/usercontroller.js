@@ -1,5 +1,8 @@
-const User = require('../models/User');
+const {User} = require('../db.js');
 const { Router } = require('express');
+const sequelize = require('../db');
+const {createSendToken}=require('./authcontroller')
+
 
  const getalluser=async(req,res)=>{
     const user = await User.findAll();
@@ -24,21 +27,28 @@ const { Router } = require('express');
     res.status(200).json({ msg: 'Usuario eliminado' });
   }
   const postUser = async (req, res, next) => {
-    const { nombre, apellidos, email, password, confirmarPassword } = req.body;
+    const {name,lastName,email,image,password,passConfirmation,rol} = req.body;
   const user = await User.findOne({ where: { email } });
+  const comparePass = (a, b) => {
+    if (a === b) {
+      return true;
+    }
+    return false;
+  };
   if (user) {
     return next ('El usario ya existe', 400);
-  } else if (!comparePass(password, confirmarPassword)) {
+  } else if (!comparePass(password, passConfirmation)) {
     return next('Las contraseñas no coinciden', 400);
   }
 
   const newUser = await User.create({
-    nombre,
-    apellidos,
+    name,
+    lastName,
     email,
     password,
-    confirmarPassword,
-    foto: req.file.filename
+    passConfirmation,
+    image,
+    rol
   });
 
   return createSendToken(newUser, 201, res);
@@ -46,22 +56,27 @@ const { Router } = require('express');
 };
    
 const putUser = async (req, res, next) => {
-    const { id } = req.params;
-    const { nombre, apellidos, email, password, confirmarPassword,rol } = req.body;
-    try{
-    await User.update({
-        nombre,
-        apellidos,
-        email,
-        password,
-        confirmarPassword,
-        rol
-    },{where:{id}});
-    res.status(200).json({msg:'Usuario actualizado'});
-    }catch(error){
-        next(error);
-    }
+  const { id } = req.params;
+  const {name,lastName,email,image,password,passConfirmation,rol} = req.body;
+  try{
+  await User.update({
+    name,
+    lastName,
+    email,
+    password,
+    passConfirmation,
+    image,
+    rol
+  },{where:{id}});
+  res.status(200).json({msg:'Usuario actualizado'});
+  }catch(error){
+      next(error);
+  }
 };
+
+
+
+
 
 
 

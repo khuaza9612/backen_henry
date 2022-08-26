@@ -10,13 +10,13 @@ const verifyToken=require('../middlewares/authenticate');
 const verifyToken2=require('../middlewares/authenticate');
 
 
-// ruta para obtener todos los usuarios
+// ruta para obtener todos los usuarios    *
 router.get('/user',verifyToken.ensureAuth,getalluser);
-// ruta para obtener un usuario
+// ruta para obtener un usuario *
 router.get('/user/:id',verifyToken.ensureAuth,getUser);
-// ruta para eliminar un usuario
+// ruta para eliminar un usuario*
 router.delete('/user/:id',verifyToken.ensureAuth,deleteUser);
-// ruta para crear un usuario
+// ruta para crear un usuario *
 router.post('/user',postUser)
 // CAMBIAR ROL DE USUARIO
 router.put('/user/:id',verifyToken.ensureAuth,putUser);

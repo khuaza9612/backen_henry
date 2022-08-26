@@ -1,5 +1,7 @@
-const Product = require('../models/Product.js');
+const {Product} = require('../db.js');
 const { Router } = require('express');
+const sequelize = require('../db');
+
 
 const getproducts = async (req, res) => {
     try {
