@@ -4,12 +4,12 @@ const bcrypt = require('bcrypt');
 
 const User = require('../models/User');
 const router = Router();
-const {getproducts,
-    getproduct,
-    deleteproduct,
-    postproduct,
-    putproduct,
-    productname}=require('../controller/productscontroller.js');
+const { getproducts,
+        getproduct,
+        deleteproduct,
+        postproduct,
+        putproduct,
+        productname } = require('../controller/productscontroller.js');
 
     
 router.get('/product',getproducts);

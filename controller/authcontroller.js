@@ -48,6 +48,7 @@ const signToken = (id) => {
     expiresIn: JWT_EXPIRES_IN,
   });
 };
+
 const validatePassword = async (password, userPassword) => {
   return await bcrypt.compare(password, userPassword);
 };
@@ -58,6 +59,7 @@ const validatePassword = async (password, userPassword) => {
   }
   return false;
 };
+
 const createSendToken = (user, statusCode, res) => {
   const token = signToken(user._id);
 
@@ -70,11 +72,11 @@ const createSendToken = (user, statusCode, res) => {
   });
 };
 
- const login = (async (req, res, next) => {
-  const { email, password } = req.body;
-  const user = await User.findOne({ where: { email } });
+const login = (async (req, res, next) => {
+const { email, password } = req.body;
+const user = await User.findOne({ where: { email } });
 
-  const correct = await validatePassword(password, user.password);
+const correct = await validatePassword(password, user.password);
 
   if (!user || !correct) {
     return next('Email o contraseña incorrecta', 401);
@@ -82,8 +84,7 @@ const createSendToken = (user, statusCode, res) => {
 
   createSendToken(user, 200, res);
 });
- module.exports={
-   login
-    };
 
-//  
+module.exports={
+  login
+};

@@ -39,11 +39,11 @@ const deleteproduct = async (req, res) => {
 
 const postproduct = async (req, res) => {
     try {
-        const { nombre, descripcion, precio, stock } = req.body;
+        const { name, description, price, stock } = req.body;
         const product = await Product.create({
-            nombre,
-            descripcion,
-            precio,
+            name,
+            description,
+            price,
             stock
         });
         res.status(201).json(product);
@@ -55,22 +55,23 @@ const postproduct = async (req, res) => {
 const putproduct = async (req, res) => {
     try {
         const { id } = req.params;
-        const { nombre, descripcion, precio, stock } = req.body;
+        const { name, description, price, stock } = req.body;
         const product = await Product.findByPk(id);
         if (!id || !product) {
             return res.status(400).json({ msg: 'No se ha especificado el id o Producto no econtrado' });
         }
         await product.update({
-            nombre,
-            descripcion,
-            precio,
+            name,
+            description,
+            price,
             stock
         });
         res.status(200).json(product);
     } catch (error) {
         res.status(500).json(error);
-    }
-}
+    };
+};
+
 const productname = async (req, res) => {
     try {
         const { name } = req.params;
@@ -87,18 +88,18 @@ const productname = async (req, res) => {
         res.status(200).json(product);
     } catch (error) {
         res.status(500).json(error);
-    }
-}
+    };
+};
    
 
     
     
-module.exports={
+module.exports = {
     getproducts,
     getproduct,
     deleteproduct,
     postproduct,
     putproduct,
     productname
-    };
+};
 

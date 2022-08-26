@@ -10,11 +10,11 @@ const User = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    nombre: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    apellidos: {
+    lastName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -29,14 +29,14 @@ const User = sequelize.define(
         },
       },
     },
-    foto: {
+    image: {
       type: DataTypes.STRING,
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    confirmarPassword: {
+    passConfirmation: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -50,10 +50,11 @@ const User = sequelize.define(
     timestamps: false,
   }
 );
+
 User.beforeCreate(async (user) => {
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
-  user.confirmarPassword = user.password;
+  user.passConfirmation = user.password;
 });
 
 
