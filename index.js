@@ -12,6 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api', require('./routes'));
 
+
 sequelize.sync({ force: false }).then(() => {
   console.log('✓ Se conectó a la base de datos');
 });
