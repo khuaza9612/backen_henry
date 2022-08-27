@@ -50,4 +50,3 @@ module.exports = (sequelize) => {
         }, {
             timestamps: false
         });
-    }

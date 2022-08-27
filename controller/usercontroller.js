@@ -1,4 +1,8 @@
-const User = require('../models/User');
+const {User} = require('../db.js');
+const { Router } = require('express');
+const sequelize = require('../db');
+const {createSendToken}=require('./authcontroller')
+
 
  const getalluser=async(req,res)=>{
     const user = await User.findAll();
@@ -8,7 +12,7 @@ const User = require('../models/User');
     const { id } = req.params;
     const user = await User.findByPk(id);
     if (!id || !user) {
-      return next(new AppError('No se ha especificado el id o Usuario no econtrado', 400));
+      return next ('No se ha especificado el id o Usuario no econtrado', 400);
     }
     res.status(200).json(user);
   };
@@ -22,9 +26,68 @@ const User = require('../models/User');
     await user.destroy();
     res.status(200).json({ msg: 'Usuario eliminado' });
   }
+  const postUser = async (req, res, next) => {
+    const {name,lastName,email,image,password,passConfirmation,rol} = req.body;
+  const user = await User.findOne({ where: { email } });
+  const comparePass = (a, b) => {
+    if (a === b) {
+      return true;
+    }
+    return false;
+  };
+  if (user) {
+    return next ('El usario ya existe', 400);
+  } else if (!comparePass(password, passConfirmation)) {
+    return next('Las contraseñas no coinciden', 400);
+  }
+
+  const newUser = await User.create({
+    name,
+    lastName,
+    email,
+    password,
+    passConfirmation,
+    image,
+    rol
+  });
+
+  return createSendToken(newUser, 201, res);
+
+};
+   
+const putUser = async (req, res, next) => {
+  const { id } = req.params;
+  const {name,lastName,email,image,password,passConfirmation,rol} = req.body;
+  try{
+  await User.update({
+    name,
+    lastName,
+    email,
+    password,
+    passConfirmation,
+    image,
+    rol
+  },{where:{id}});
+  res.status(200).json({msg:'Usuario actualizado'});
+  }catch(error){
+      next(error);
+  }
+};
+
+
+
+
+
+
+
+   
+
+
 
   module.exports={
     getalluser,
     getUser,
-    deleteUser
+    deleteUser,
+    postUser,
+    putUser
     };
