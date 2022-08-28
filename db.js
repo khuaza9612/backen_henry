@@ -2,11 +2,7 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 
-<<<<<<< Updated upstream
- const sequelize = new Sequelize('postgres://postgres:PGenius1@localhost/gym', {
-=======
 const sequelize = new Sequelize('postgres://postgres:PGenius1@localhost/gym', {
->>>>>>> Stashed changes
   logging: false,
 });
 
