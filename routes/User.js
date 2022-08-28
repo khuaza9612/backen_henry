@@ -17,6 +17,13 @@ router.get('/user/:id',verifyToken.ensureAuth,getUser);
 // route to delete a user
 router.delete('/user/:id',verifyToken.ensureAuth,deleteUser);
 // route to create a user
+// ruta para obtener todos los usuarios    *
+router.get('/user',verifyToken.ensureAuth,getalluser);
+// ruta para obtener un usuario *
+router.get('/user/:id',verifyToken.ensureAuth,getUser);
+// ruta para eliminar un usuario*
+router.delete('/user/:id',verifyToken.ensureAuth,deleteUser);
+// ruta para crear un usuario *
 router.post('/user',postUser)
 // route to change user rol
 router.put('/user/:id',verifyToken.ensureAuth,putUser);

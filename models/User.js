@@ -51,7 +51,7 @@ module.exports = (sequelize) => {
       timestamps: false,
     }
   );
-}
+};
 
 // const User = sequelize.define(
 //   'user',

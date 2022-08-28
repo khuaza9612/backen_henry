@@ -1,7 +1,11 @@
+const {User} = require('../db.js');
 const { Router } = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const User = require('../models/User.js');
+
+
+const sequelize = require('../db');;
+
 const { JWT_SECRET, JWT_EXPIRES_IN } = require('../config/env-vars');
 
 const router = Router();
@@ -48,20 +52,13 @@ const signToken = (id) => {
     expiresIn: JWT_EXPIRES_IN,
   });
 };
-
 const validatePassword = async (password, userPassword) => {
   return await bcrypt.compare(password, userPassword);
 };
 
- const comparePass = (a, b) => {
-  if (a === b) {
-    return true;
-  }
-  return false;
-};
-
+ 
 const createSendToken = (user, statusCode, res) => {
-  const token = signToken(user._id);
+  const token = signToken(user.id);
 
   res.status(statusCode).json({
     status: 'success',
@@ -72,19 +69,22 @@ const createSendToken = (user, statusCode, res) => {
   });
 };
 
-const login = (async (req, res, next) => {
-const { email, password } = req.body;
-const user = await User.findOne({ where: { email } });
+ const login = (async (req, res, next) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ where: { email } });
 
-const correct = await validatePassword(password, user.password);
+  //const correct = await validatePassword(password, user.password);
 
-  if (!user || !correct) {
-    return next('Email o contraseña incorrecta', 401);
+  if (!user) {
+    return next ('Email o contraseña incorrecta', 401);
   }
 
   createSendToken(user, 200, res);
 });
 
-module.exports={
-  login
-};
+
+
+ module.exports={
+   login,
+   createSendToken
+    };
