@@ -2,6 +2,10 @@ const {Product} = require('../db.js');
 const { Router } = require('express');
 const sequelize = require('../db');
 
+// const Product= async(user) => {
+//     const salt = await bcrypt.genSalt(10);
+//     user.password = await bcrypt.hash(user.password, salt);
+//     user.passConfirmation = user.password;}
 
 const getproducts = async (req, res) => {
     try {

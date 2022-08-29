@@ -40,6 +40,10 @@ const {createSendToken}=require('./authcontroller')
   } else if (!comparePass(password, passConfirmation)) {
     return next('Las contraseñas no coinciden', 400);
   }
+  const beforeCreate= async(user) => {
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(user.password, salt);
+    user.passConfirmation = user.password;}
 
   const newUser = await User.create({
     name,
