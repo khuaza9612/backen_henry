@@ -1,5 +1,6 @@
 const axios = require ('axios');
 const { Product } = require('../db');
+//const {products} = require('../models/assets/products.json')
 
 async function LoadDb(req, res) {
   try {
