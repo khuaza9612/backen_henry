@@ -72,11 +72,8 @@ const createSendToken = (user, statusCode, res) => {
  const login = async (req, res, next) => {
   const { email, password } = req.body;
   const user = await User.findOne({ where: { email } });
-  // const validatePassword = async (password, userPassword) => {
-  //   return await bcrypt.compare(password, userPassword);n
-  // };
-
-  const correct = await validatePassword(password,user.password);
+  if (!user) return res.status(401).json({ msg: 'Usuario no encontrado' });
+    const correct = await validatePassword(password,user.password);
 
   if (!user || !correct) {
     return next('Email o contraseña incorrecta', 401);
