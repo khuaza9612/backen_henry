@@ -18,7 +18,8 @@ module.exports = (sequelize) => {
             allowNull: false
         },
         ordersInfo: {
-            type: DataTypes.INTEGER
+            type: DataTypes.STRING,
+            defaultValue: 'En preparación.'
         },
         operationNum: {
             type: DataTypes.BIGINT
