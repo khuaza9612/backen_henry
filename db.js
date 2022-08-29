@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const sequelize = new Sequelize('postgres://postgres:Hk1143985102@localhost:5433/gym', {
+
   logging: false,
 });
 
