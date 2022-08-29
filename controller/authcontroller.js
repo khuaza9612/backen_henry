@@ -69,18 +69,22 @@ const createSendToken = (user, statusCode, res) => {
   });
 };
 
- const login = (async (req, res, next) => {
+ const login = async (req, res, next) => {
   const { email, password } = req.body;
   const user = await User.findOne({ where: { email } });
+  // const validatePassword = async (password, userPassword) => {
+  //   return await bcrypt.compare(password, userPassword);n
+  // };
 
-  //const correct = await validatePassword(password, user.password);
+  const correct = await validatePassword(password,user.password);
 
-  if (!user) {
-    return next ('Email o contraseña incorrecta', 401);
+  if (!user || !correct) {
+    return next('Email o contraseña incorrecta', 401);
   }
 
   createSendToken(user, 200, res);
-});
+};
+
 
 
 
