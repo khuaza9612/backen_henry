@@ -49,14 +49,6 @@ module.exports = (sequelize) => {
       },
     }, 
     {
-<<<<<<< HEAD
-      timestamps: false,
-    }
-  );
-
-  
-}
-=======
       
        timestamps: false,
      
@@ -70,4 +62,3 @@ module.exports = (sequelize) => {
     },
     );
   };
->>>>>>> 53c4750cbf4a5d7d47f8b01a86474cb7ff87405e
