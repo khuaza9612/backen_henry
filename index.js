@@ -6,7 +6,7 @@ const { conn } = require('./db');
 const { LoadDb } = require('./LoadDb/LoadDb');
 config();
 
-const port = process.env.PORT || 3000; // <== You can change the port
+const PORT = process.env.PORT || 3000; // <== You can change the port
 
 app.use(cors());
 app.use(express.json());
@@ -14,13 +14,11 @@ app.use('/api', require('./routes'));
 
 
 conn.sync({ force: true }).then(() => {
-
-  app.listen(3001, () => {
-    LoadDb();
-    console.log('✓ Se conectó a la base de datos');
-  })
+  app.listen(process.env.PORT, () => {
+    console.log("%s listening at " + PORT); // eslint-disable-line no-console
+  });
 });
 
-app.listen(port, () => {
-  console.log('✓ Servidor corriendo en el puerto ' + port);
-});
+// app.listen(PORT, () => {
+//   console.log('✓ Servidor corriendo en el puerto ' + PORT);
+// });
