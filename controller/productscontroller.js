@@ -2,6 +2,10 @@ const {Product} = require('../db.js');
 const { Router } = require('express');
 const sequelize = require('../db');
 
+// const Product= async(user) => {
+//     const salt = await bcrypt.genSalt(10);
+//     user.password = await bcrypt.hash(user.password, salt);
+//     user.passConfirmation = user.password;}
 
 const getproducts = async (req, res) => {
     try {
@@ -41,8 +45,8 @@ const deleteproduct = async (req, res) => {
 
 const postproduct = async (req, res) => {
     try {
-        const { title, brand, image, description, price, discount, status, stock, genre, sport } = req.body;
-        const product = await Product.create({ title, brand, image, description, price, discount, status, stock, genre, sport });
+        const { id,title, brand, image, description, price, discount, status, stock, genre, sport,size } = req.body;
+        const product = await Product.create({ id,title, brand, image, description, price, discount, status, stock, genre, sport,size });
         res.status(201).json(product);
     } catch (error) {
         res.status(500).json(error);

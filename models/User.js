@@ -2,11 +2,14 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../db');
 const bcrypt = require('bcrypt');
 
+
+
 module.exports = (sequelize) => {
   sequelize.define(
     'user',
     {
       id: {
+        
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -46,9 +49,18 @@ module.exports = (sequelize) => {
         values: ['admin', 'user'],
         defaultValue: 'user',
       },
-    },
+    }, 
     {
-      timestamps: false,
-    }
-  );
-}
+      
+       timestamps: false,
+     
+      hooks: {
+        beforeCreate: async (user) => {
+          let salt = await bcrypt.genSalt(10);
+          user.password = await bcrypt.hash(user.password, salt);
+          user.passConfirmation = user.password;
+        }
+      }
+    },
+    );
+  };

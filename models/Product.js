@@ -1,15 +1,15 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../db');
-
+//const sequelize = require('../db');
 
 module.exports = (sequelize) => {
     sequelize.define(
         'product', 
         {
             id: {
+                //min:100,
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                primaryKey: true,
+                primaryKey: true,                
                 autoIncrement: true
             },
             title: {
@@ -36,7 +36,7 @@ module.exports = (sequelize) => {
                 type: DataTypes.BOOLEAN
             },
             stock: {
-                type: DataTypes.STRING
+                type: DataTypes.INTEGER
             },
             genre: {
                 type: DataTypes.STRING
@@ -50,7 +50,10 @@ module.exports = (sequelize) => {
         }, {
             timestamps: false
         });
-    }
+
+};
+
+    
 
 // const Product =  sequelize.define(
 //     'product', 
