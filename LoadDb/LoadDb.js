@@ -8,7 +8,7 @@ async function LoadDb(req, res) {
       const prodApi = await axios.get('https://apimocha.com/gimasioapi/post');
       const ProductModel = prodApi.data.map((e) => {
         return {
-          id: e.id,
+          //id: e.id,
           title: e.title,
           brand: e.brand,
           description: e.description,
@@ -24,7 +24,7 @@ async function LoadDb(req, res) {
       ProductModel.forEach(async (e) => {
         await Product.findOrCreate({
           where: {
-            id: e.id,
+           // id: e.id,
             title: e.title,
             brand: e.brand,
             description: e.description,
