@@ -2,11 +2,14 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../db');
 const bcrypt = require('bcrypt');
 
+
+
 module.exports = (sequelize) => {
   sequelize.define(
     'user',
     {
       id: {
+        
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -46,7 +49,7 @@ module.exports = (sequelize) => {
         values: ['admin', 'user'],
         defaultValue: 'user',
       },
-    },
+    }, 
     {
       timestamps: false,
       hooks: {
@@ -59,4 +62,3 @@ module.exports = (sequelize) => {
     }
   );
 };
-

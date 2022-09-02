@@ -4,9 +4,9 @@ module.exports = (sequelize) => {
     sequelize.define('order',
     {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV1,
             primaryKey: true,
-            autoIncrement: true,
             allowNull: false
         },
         totalAmount: {
@@ -14,15 +14,18 @@ module.exports = (sequelize) => {
             allowNull: false
         },
         adressShipping: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false
         },
         ordersInfo: {
             type: DataTypes.STRING,
             defaultValue: 'En preparación.'
         },
-        operationNum: {
-            type: DataTypes.BIGINT
+        orderNumber: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            allowNull: false,
+            default: 1
         }
     }, 
     {

@@ -33,8 +33,8 @@ const { Product, User, Bill, Order } = sequelize.models;
 Product.belongsToMany(User, {through: "user_products", timestamps: false});
 User.belongsToMany(Product, {through: "user_products", timestamps: false});
 
-Bill.belongsTo(Order, {timestamps: false});
-Order.hasOne(Bill, {timestamps: false});
+Bill.belongsTo(Order, {through: "bills_order", timestamps: false});
+Order.hasOne(Bill, {through: "bills_order", timestamps: false});
 
 
 module.exports = {

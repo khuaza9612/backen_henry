@@ -4,10 +4,16 @@ module.exports = (sequelize) => {
     sequelize.define('bill',
     {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV1,
             primaryKey: true,
-            autoIncrement: true,
             allowNull: false
+        },
+        billNumber: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            allowNull: false,
+            default: 1
         },
         name: {
             type: DataTypes.STRING,
@@ -42,10 +48,17 @@ module.exports = (sequelize) => {
         },
         totalAmount: {
             type: DataTypes.INTEGER,
+            allowNull: false,
+            type: DataTypes.BIGINT,
             allowNull: false
+        },
+        observations: {
+            type: DataTypes.TEXT,
+            allowNull: true
         }
     },  
     {
         timestamps: false
     });
 }; 
+

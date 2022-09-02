@@ -2,6 +2,8 @@ const {User} = require('../db.js');
 const { Router } = require('express');
 const sequelize = require('../db');
 const {createSendToken}=require('./authcontroller')
+const {sendEmail}=require('../utils/email.js');
+
 
 
  const getalluser=async(req,res)=>{
@@ -40,6 +42,11 @@ const {createSendToken}=require('./authcontroller')
   } else if (!comparePass(password, passConfirmation)) {
     return next('Las contraseñas no coinciden', 400);
   }
+  const beforeCreate= async(user) => {
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(user.password, salt);
+    user.passConfirmation = user.password;}
+    
 
   const newUser = await User.create({
     name,
@@ -50,7 +57,15 @@ const {createSendToken}=require('./authcontroller')
     image,
     rol
   });
+  const createdUser = newUser.dataValues;
 
+  sendEmail({
+     
+      name: newUser.nombre,
+      email: newUser.email,
+     
+    });
+  
   return createSendToken(newUser, 201, res);
 
 };
