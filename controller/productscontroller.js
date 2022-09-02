@@ -45,8 +45,8 @@ const deleteproduct = async (req, res) => {
 
 const postproduct = async (req, res) => {
     try {
-        const { title, brand, image, description, price, discount, status, stock, genre, sport } = req.body;
-        const product = await Product.create({ title, brand, image, description, price, discount, status, stock, genre, sport });
+        const { id,title, brand, image, description, price, discount, status, stock, genre, sport,size } = req.body;
+        const product = await Product.create({ id,title, brand, image, description, price, discount, status, stock, genre, sport,size });
         res.status(201).json(product);
     } catch (error) {
         res.status(500).json(error);
