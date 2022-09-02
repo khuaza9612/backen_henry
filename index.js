@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const { config } = require('dotenv');
 const app = express();
-const  sequelize = require('./db');
-
+const { conn } = require('./db');
+const { LoadDb } = require('./LoadDb/LoadDb');
 config();
 
 const port = process.env.PORT || 3000; // <== You can change the port
@@ -13,8 +13,12 @@ app.use(express.json());
 app.use('/api', require('./routes'));
 
 
-sequelize.sync({ force: false }).then(() => {
-  console.log('✓ Se conectó a la base de datos');
+conn.sync({ force: false }).then(() => {
+
+  app.listen(3001, () => {
+   //LoadDb();
+    console.log('✓ Se conectó a la base de datos');
+  })
 });
 
 app.listen(port, () => {

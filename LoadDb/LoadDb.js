@@ -1,6 +1,6 @@
 const axios = require ('axios');
-const { Product } = require ('../models/Product');
-
+const { Product } = require('../db');
+//const {products} = require('../models/assets/products.json')
 
 async function LoadDb(req, res) {
   try {
@@ -14,6 +14,7 @@ async function LoadDb(req, res) {
           description: e.description,
           price: e.price,
           discount: e.discount,
+          image: e.image,
           status: e.status,
           stock: e.stock,
           genre: e.genre,
@@ -29,6 +30,7 @@ async function LoadDb(req, res) {
             description: e.description,
             price: e.price,
             discount: e.discount,
+            image: e.image,
             status: e.status,
             stock: e.stock,
             genre: e.genre,

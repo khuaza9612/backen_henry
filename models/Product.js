@@ -49,7 +49,7 @@ module.exports = (sequelize) => {
         }, {
             timestamps: false
         });
-    };
+};
 
 
 module.exports = Product;

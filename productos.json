@@ -1,0 +1,45 @@
+{
+    "clients": [
+{
+    "id": 1,
+    "title": "Women's soccer jersey",
+    "brand": "Nike",
+    "image": "https://res.cloudinary.com/demogorgonn/image/upload/v1661402459/Pgrupal/53c49a99acd1ac60c6d2857b6687a78d_pgpbtd.jpg",
+    "description": "Women's soccer club shirts",
+    "price": "1-99000",
+    "discount": "0%-100%",
+    "status": "true",
+    "stock": "1-999",
+    "genre": "Male",
+    "sport": "Futbol",
+    "size": ""
+  },
+  {
+    "id": 2,
+    "title": "Women's soccer jersey",
+    "brand": "Adidas",
+    "image": "https://res.cloudinary.com/demogorgonn/image/upload/v1661402465/Pgrupal/camiseta-titular-colombia-20-21_suzkbh.jpg",
+    "description": "Women's soccer club shirts",
+    "price": "1-99000",
+    "discount": "0%-100%",
+    "status": "true",
+    "stock": "1-999",
+    "genre": "Male",
+    "sport": "Futbol",
+    "size": ""
+  },
+  {
+    "id": 3,
+    "title": "Men's soccer jersey",
+    "brand": "Adidas",
+    "image": "https://res.cloudinary.com/demogorgonn/image/upload/v1661402368/Pgrupal/camiseta-de-local-del-atletico-junior_foggrh.jpg",
+    "description": "Men's soccer club shirts",
+    "price": "1-99000",
+    "discount": "0%-100%",
+    "status": "true",
+    "stock": "1-999",
+    "genre": "Female",
+    "sport": "Futbol",
+    "size": ""
+  }
+]}

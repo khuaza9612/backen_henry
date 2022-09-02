@@ -1,7 +1,9 @@
 const { Sequelize } = require('sequelize');
+const fs = require('fs');
+const path = require('path');
 
+const sequelize = new Sequelize('postgres://postgres:Hk1143985102@localhost:5433/gym', {
 
- const sequelize = new Sequelize('postgres://postgres:Hk1143985102@localhost:5433/gym', {
   logging: false,
 });
 
@@ -36,4 +38,7 @@ Bill.belongsTo(Order, {through: "bills_order", timestamps: false});
 Order.hasOne(Bill, {through: "bills_order", timestamps: false});
 
 
-module.exports = sequelize;
+module.exports = {
+  ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
+  conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
+};

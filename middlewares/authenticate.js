@@ -1,5 +1,8 @@
 const jwt= require('jsonwebtoken');
-const JWT_SECRET = '23k4!jhisd&jhf8*asfdasdf$dsf45%&t';
+
+const { JWT_SECRET, JWT_EXPIRES_IN } = require('../config/env-vars');
+
+
 
 
    const ensureAuth = async (req, res, next) => {
@@ -13,12 +16,17 @@ const JWT_SECRET = '23k4!jhisd&jhf8*asfdasdf$dsf45%&t';
     next();
 
 };
-const restrictTo = (req, res, nex) => {
-  if (req.user.id === req.params.id||req.user.rol === 'admin') {
-    return res.status(401).json({ msg: 'No tienes permisos para realizar esta acción' });
+const restrictTo = (roles) => async (req, res, next) => {
+  const token=req.headers.authorization.split(' ')[1];
+  const tokenData=await jwt.verify(token,JWT_SECRET);
+  if(!roles.includes(tokenData.rol)){
+    return next('No tienes permisos para acceder a este recurso',403);
   }
-  next(); // si es admin, seguir
+  next();
+  
 };
+
+
 module.exports = {
   ensureAuth,restrictTo
 
