@@ -1,4 +1,4 @@
-const { Bill, Order } = require('../db');
+const { Bill, Order } = require('../db.js');
 
 
 const getBill = async (req, res) => {
