@@ -52,4 +52,3 @@ module.exports = (sequelize) => {
         });
 };
 
-module.exports = Product;
