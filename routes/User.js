@@ -20,8 +20,8 @@ router.delete('/user/:id',verifyToken.ensureAuth,deleteUser);
 router.post('/user',postUser) 
 // CAMBIAR ROL DE USUARIO
 router.put('/user/:id',verifyToken.ensureAuth,putUser);
-router.post("/olvide-password", olvidePassword);
-router.post("/olvide-password/:token", nuevoPassword);
+// router.post("/olvide-password", olvidePassword);
+// router.post("/olvide-password/:token", nuevoPassword);
 
 
 
