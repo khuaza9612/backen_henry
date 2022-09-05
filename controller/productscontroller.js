@@ -1,6 +1,9 @@
 const {Product} = require('../db.js');
 const { Router } = require('express');
 const sequelize = require('../db');
+const AppError =require ('../utils/appError.js');
+const CatchAsyns=require('../utils/catchAsync.js');
+
 
 // const Product= async(user) => {
 //     const salt = await bcrypt.genSalt(10);
@@ -25,11 +28,11 @@ const getproduct = async (req, res) => {
         }
         res.status(200).json(product);
     } catch (error) {
-        res.status(500).json(error);
+        ;
     }
 }
 
-const deleteproduct = async (req, res) => {
+const deleteproduct =  async (req, res,  next) => {
     try {
         const { id } = req.params;
         const product = await Product.findByPk(id);
@@ -39,9 +42,9 @@ const deleteproduct = async (req, res) => {
         await product.destroy();
         res.status(200).json({ msg: 'Producto eliminado' });
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
-}
+};
 
 const postproduct = async (req, res) => {
     try {

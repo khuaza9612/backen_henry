@@ -22,7 +22,7 @@ const restrictTo = (roles) => async (req, res, next) => {
   if(!roles.includes(tokenData.rol)){
     return next('No tienes permisos para acceder a este recurso',403);
   }else{
-    next();
+    return next('No tienes permisos para acceder a este recurso',403);
   }
  
   
