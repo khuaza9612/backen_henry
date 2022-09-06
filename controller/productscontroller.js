@@ -75,12 +75,12 @@ const putproduct = async (req, res) => {
             status,
             stock,
             genre,
-            sport
+            sport,},{ where: { id } });
 
 
 
            
-        });
+        
         res.status(200).json(product);
     } catch (error) {
         res.status(500).json(error);
