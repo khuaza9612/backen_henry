@@ -21,8 +21,10 @@ const restrictTo = (roles) => async (req, res, next) => {
   const tokenData=await jwt.verify(token,JWT_SECRET);
   if(!roles.includes(tokenData.rol)){
     return next('No tienes permisos para acceder a este recurso',403);
+  }else{
+    next();
   }
-  next();
+ 
   
 };
 
