@@ -91,68 +91,68 @@ const putUser = async (req, res, next) => {
   }
 };
 
-const olvidePassword = async (req, res) => {
-  const { email } = req.body;
+// const olvidePassword = async (req, res) => {
+//   const { email } = req.body;
 
-  const userExists = await User.findOne({
-    where: { email },
-  });
+//   const userExists = await User.findOne({
+//     where: { email },
+//   });
 
-  if (!userExists) {
-    const error = new Error(`El usuario con el mail ${email} no existe`);
-    return res.status(400).json({ msg: error.message });
-  }
+//   if (!userExists) {
+//     const error = new Error(`El usuario con el mail ${email} no existe`);
+//     return res.status(400).json({ msg: error.message });
+//   }
 
-  try {
-    userExists.clave = generarTokenID();
-    await userExists.save();
+//   try {
+//     userExists.clave = generarTokenID();
+//     await userExists.save();
 
-    emailOlvidePassword({
-      email: userExists.email,
-      name: userExists.nombre,
-      clave: userExists.clave,
-    });
+//     emailOlvidePassword({
+//       email: userExists.email,
+//       name: userExists.nombre,
+//       clave: userExists.clave,
+//     });
 
-    return res.json({
-      msg: `Hemos enviado un email a ${userExists.mail} con las instrucciones`,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-const nuevoPassword = async (req, res) => {
-  const { clave } = req.params;
-  const { password } = req.body;
+//     return res.json({
+//       msg: `Hemos enviado un email a ${userExists.mail} con las instrucciones`,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+// const nuevoPassword = async (req, res) => {
+//   const { clave } = req.params;
+//   const { password } = req.body;
 
-  if (!password) {
-    const error = new Error("Contraseña solicitada no ingresada");
-    return res.status(400).json({ msg: error.message });
-  }
+//   if (!password) {
+//     const error = new Error("Contraseña solicitada no ingresada");
+//     return res.status(400).json({ msg: error.message });
+//   }
 
-  const user = await User.findOne({
-    where: { clave },
-  });
+//   const user = await User.findOne({
+//     where: { clave },
+//   });
 
-  if (user) {
-    user.password = await beforeCreate(password);
-    user.clave = "";
-    try {
-      await user.save();
-      return res.json({ msg: "Contraseña cambiada correctamente" });
-    } catch (error) {
-      console.log(error);
-    }
-  } else {
-    const error = new Error("Token no valido");
-    return res.status(404).json({ msg: error.message });
-  }
-};
+//   if (user) {
+//     user.password = await beforeCreate(password);
+//     user.clave = "";
+//     try {
+//       await user.save();
+//       return res.json({ msg: "Contraseña cambiada correctamente" });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   } else {
+//     const error = new Error("Token no valido");
+//     return res.status(404).json({ msg: error.message });
+//   }
+// };
   module.exports={
     getalluser,
     getUser,
     deleteUser,
     postUser,
     putUser,
-    olvidePassword,
-    nuevoPassword
+    // olvidePassword,
+    // nuevoPassword
     };
