@@ -506,7 +506,7 @@ const sendEmail=async(data)=>{
 }
 
 const emailOlvidePassword=async(data)=>{
-    const {email,name,clave}=data;
+    const {email,name,clave,id}=data;
     const transport = createTransport();
     const info=await transport.sendMail({
         from:"khuazad9612@gmail.com",
@@ -516,7 +516,7 @@ const emailOlvidePassword=async(data)=>{
         html: 
         `<p>Hola : ${name}, has solicitado reestablecer tu password en PRO-ROPA</p>
         <p> Sigue el siguiente enlace para generar un nuevo password: 
-            <a href="http://localhost:3000/olvide-password/${clave}">Reestablecer Password</a>
+            <a href="https://athens-theta.vercel.app/">Reestablecer Password</a>
         </p>
         `,
     });
