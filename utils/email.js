@@ -516,7 +516,7 @@ const emailOlvidePassword=async(data)=>{
         html: 
         `<p>Hola : ${name}, has solicitado reestablecer tu password en PRO-ROPA</p>
         <p> Sigue el siguiente enlace para generar un nuevo password: 
-            <a href="https://athens-theta.vercel.app/">Reestablecer Password</a>
+            <a href="http://localhost:3000/api/olvide-password/${clave}">Reestablecer Password</a>
         </p>
         `,
     });

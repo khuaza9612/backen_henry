@@ -49,9 +49,9 @@ module.exports = (sequelize) => {
         values: ['admin', 'user'],
         defaultValue: 'user',
       },
-      // clave: {
-      //   type: DataTypes.STRING,
-      // },
+      clave: {
+        type: DataTypes.STRING,
+      },
     }, 
     {
       
