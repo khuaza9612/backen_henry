@@ -54,9 +54,7 @@ module.exports = (sequelize) => {
       },
     }, 
     {
-      
-       timestamps: false,
-     
+      timestamps: false,
       hooks: {
         beforeCreate: async (user) => {
           let salt = await bcrypt.genSalt(10);
@@ -64,6 +62,6 @@ module.exports = (sequelize) => {
           user.passConfirmation = user.password;
         }
       }
-    },
-    );
-  };
+    }
+  );
+};
