@@ -5,9 +5,9 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const router = Router();
 const {getalluser,getUser,deleteUser,postUser,putUser,
-   // olvidePassword,nuevoPassword,comprobarToken
+    olvidePassword,nuevoPassword,comprobarToken
 }=require('../controller/usercontroller.js');
-
+const{crearOrdem,notificacionOrden}=require('../controller/mercadopago.js');
 const verifyToken=require('../middlewares/authenticate');
 const verifyToken2=require('../middlewares/authenticate');
 
@@ -23,10 +23,16 @@ router.post('/user',postUser)
 // CAMBIAR ROL DE USUARIO
 router.put('/user/:id',verifyToken.ensureAuth,putUser);
 
-// router.post("/olvide-password", olvidePassword);
-// router.get("/olvide-password/:clave", comprobarToken);
+router.post("/olvide-password", olvidePassword);
+router.get("/olvide-password/:clave", comprobarToken);
 
-// router.post("/olvide-password/:clave", nuevoPassword);
+router.post("/olvide-password/:clave", nuevoPassword);
+
+//------------------MERCADE PAGO------------------
+router.post('/crear-orden',crearOrdem);
+router.get('/mercadopago',notificacionOrden);
+
+
 
 
 
