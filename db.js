@@ -62,11 +62,11 @@ const { Product, User,Bill,Order } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Product.belongsToMany(User, {through: "user_products", timestamps: false});
-User.belongsToMany(Product, {through: "user_products", timestamps: false});
+// s
 
-Bill.belongsTo(Order, {through: "bills_order", timestamps: false});
-Order.hasOne(Bill, {through: "bills_order", timestamps: false});
+
+Bill.hasOne(Order);
+Order.belongsTo(Bill);
 
 
 module.exports = {
