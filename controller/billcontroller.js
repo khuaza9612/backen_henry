@@ -6,7 +6,7 @@ const getBill = async (req, res) => {
     const allBills = await Bill.findAll({
         include: Order
     });
-
+    console.log(allBills)
     if(billNumber) {
         const bill = await allBills.filter(e => e.billNumber == billNumber);
 
@@ -45,25 +45,20 @@ const putBill = (req, res, next) => {
     .catch(next);
 };
 
-const postBill = async (req, res) => {
+const postBillxOrder = async (req, res) => {
     try {
-        const { 
-                billNumber, 
-                name, 
-                lastName, 
-                email, 
-                adress, 
-                celNumber, 
-                buyersId, 
-                totalAmount,
-                observations 
-            } = req.body;
-
-        // const bill = await Bill.findAll({
-        //     where: { billNumber: billNumber }
-        //     }); 
-
-        // if(bill.length) return res.status(409).send('El numero de factura ya existe');
+        const {  
+            name, 
+            lastName, 
+            email, 
+            adress, 
+            celNumber, 
+            buyersId, 
+            totalAmount,
+            adressShipping,
+            ordersInfo,
+            observations
+        } = req.body;
 
         const newBill = await Bill.create(
             { 
@@ -77,6 +72,17 @@ const postBill = async (req, res) => {
                 observations
             }
         );
+
+        const newOrder = await Order.create(
+            { 
+                adressShipping,
+                ordersInfo
+            },
+            {
+                include: Bill,
+            }
+        );
+
         res.status(200).send('Created!');
     } catch (error) {
         res.status(409).send(error);
@@ -87,5 +93,5 @@ module.exports = {
     getBill,
     getBillById,
     putBill,
-    postBill
+    postBillxOrder
 };

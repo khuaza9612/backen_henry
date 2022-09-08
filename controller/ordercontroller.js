@@ -30,37 +30,31 @@ const putOrder = (req, res, next) => {
     .catch(next);
 };
 
-const postOrder = async (req, res) => {
-    try {
-        const { 
-            totalAmount,
-            adressShipping,
-            ordersInfo
-            } = req.body;
+// const postOrder = async (req, res) => {
+//     try {
+//         const { 
+//             totalAmount,
+//             adressShipping,
+//             ordersInfo
+//             } = req.body;
 
-        // const order = await Order.findAll({
-        //     where: { operationNum }
-        //     }); 
-
-        // if(order.length) return res.status(409).send('El numero de orden ya existe');
-
-        const newOrder = await Order.create(
-            { 
-                totalAmount,
-                adressShipping,
-                ordersInfo
-            }
-        );
-        res.status(200).send('Created!');
-    } catch (error) {
-        res.status(409).send(error);
-    };
-};
+//         const newOrder = await Order.create(
+//             { 
+//                 totalAmount,
+//                 adressShipping,
+//                 ordersInfo
+//             }
+//         );
+//         res.status(200).send('Created!');
+//     } catch (error) {
+//         res.status(409).send(error);
+//     };
+// };
 
 
 module.exports = {
     // getOrder,
     getOrderById,
     putOrder,
-    postOrder
+    // postOrder
 };

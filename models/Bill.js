@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
+            // unique: true,
             validate: {
                 isEmail: {
                     msg: 'El email no es válido',
@@ -34,6 +34,8 @@ module.exports = (sequelize) => {
                 }
             }
         },
+
+        //agregar producto y cantidad
         adress: {
             type: DataTypes.STRING,
             allowNull: false

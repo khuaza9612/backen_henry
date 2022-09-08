@@ -491,7 +491,7 @@ const createTransport = () => {
 return transport;
 }
 const sendEmail=async(data)=>{
-    const {email,name,token}=data;
+    const {email,name,clave}=data;
     const transport = createTransport();
     const info=await transport.sendMail({
         from:"khuazad9612@gmail.com",
@@ -504,9 +504,32 @@ const sendEmail=async(data)=>{
 
      return
 }
-exports.sendEmail=()=>sendEmail();
 
-module.exports = { sendEmail};
+const emailOlvidePassword=async(data)=>{
+    const {email,name,clave,id}=data;
+    const transport = createTransport();
+    const info=await transport.sendMail({
+        from:"khuazad9612@gmail.com",
+        to:email ,
+        subject:"Welcome to our website",
+        text:"Welcome to our website",
+        html: 
+        `<p>Hola : ${name}, has solicitado reestablecer tu password en PRO-ROPA</p>
+        <p> Sigue el siguiente enlace para generar un nuevo password: 
+            <a href="http://localhost:3000/api/olvide-password/${clave}">Reestablecer Password</a>
+        </p>
+        `,
+    });
+    console.log("Message sent: %s", info.messageId);
+
+     return
+}
+exports.sendEmail=()=>sendEmail();
+exports.emailOlvidePassword=()=>emailOlvidePassword();
+
+
+
+module.exports = { sendEmail,emailOlvidePassword};
 
 
 // const emailRegistro = async (data) => {
