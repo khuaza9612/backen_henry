@@ -480,8 +480,8 @@ const createTransport = () => {
         port: 465,
         secure: true,
         auth: {
-          user: "khuaza9612@gmail.com",
-          pass: "ujlvihxxlezdnxrx",
+          user: "athenssoport@gmail.com",
+          pass: "imgrduyxazcdntoo",
         },
         tls: {
             rejectUnauthorized: false
@@ -494,7 +494,7 @@ const sendEmail=async(data)=>{
     const {email,name,clave}=data;
     const transport = createTransport();
     const info=await transport.sendMail({
-        from:"khuazad9612@gmail.com",
+        from:"athenssoport@gmail.com",
         to:email ,
         subject:"Welcome to our website",
         text:"Welcome to our website",
