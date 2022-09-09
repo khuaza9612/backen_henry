@@ -1,4 +1,4 @@
-const {Product} = require('../db.js');
+const { Product, Review } = require('../db.js');
 const { Router } = require('express');
 const sequelize = require('../db');
 const AppError =require ('../utils/appError.js');
@@ -12,7 +12,11 @@ const CatchAsyns=require('../utils/catchAsync.js');
 
 const getproducts = async (req, res) => {
     try {
-        const products = await Product.findAll();
+        const products = await Product.findAll({
+            include: {
+                model: Review
+            }
+        });
         res.json(products);
     } catch (error) {
         res.status(500).json(error);
