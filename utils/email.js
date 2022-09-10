@@ -514,9 +514,9 @@ const emailOlvidePassword=async(data)=>{
         subject:"Welcome to our website",
         text:"Welcome to our website",
         html: 
-        `<p>Hola : ${name}, has solicitado reestablecer tu password en PRO-ROPA</p>
+        `<p>Hola :  has solicitado reestablecer tu password </p>
         <p> Sigue el siguiente enlace para generar un nuevo password: 
-            <a href="http://localhost:3000/api/olvide-password/${clave}">Reestablecer Password</a>
+            <a href="https://pg-athen.herokuapp.com/api/olvide-password/${clave}">Reestablecer Password</a>
         </p>
         `,
     });

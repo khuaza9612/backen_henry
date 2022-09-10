@@ -97,8 +97,8 @@ const olvidePassword = async (req, res) => {
   });
 
   if (!userExists) {
-    const error = new Error(`El usuario con el mail ${email} no existe`);
-    return res.status(400).json({ msg: error.message });
+   
+    return res.status(400).json({ msg: `El usuario con el mail ${email} no existe` });
   }
 
   try {
