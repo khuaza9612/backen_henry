@@ -35,7 +35,7 @@ router.put('/user/:id',verifyToken.ensureAuth,putUser);
 router.post("/olvide-password", olvidePassword);
 router.get("/olvide-password/:clave", comprobarToken);
 
-router.post("/olvide-password/:clave", nuevoPassword);
+router.post("/olvide-passwords", nuevoPassword);
 
 //------------------MERCADE PAGO------------------
 router.post('/crear-orden',crearOrdem);

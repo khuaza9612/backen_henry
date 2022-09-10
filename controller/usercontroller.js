@@ -138,7 +138,7 @@ const comprobarToken = async (req, res) => {
 
 
 const nuevoPassword = async (req, res) => {
-  const { clave } = req.params;
+  const { clave } = req.body;
   const { password } = req.body;
 
   if (!password) {
