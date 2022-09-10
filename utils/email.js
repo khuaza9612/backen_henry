@@ -480,8 +480,8 @@ const createTransport = () => {
         port: 465,
         secure: true,
         auth: {
-          user: "athenssoport@gmail.com",
-          pass: "imgrduyxazcdntoo",
+          user: "henrypfg11@gmail.com",
+          pass: "chirxatvtficaopa",
         },
         tls: {
             rejectUnauthorized: false
