@@ -36,5 +36,9 @@ const postReview = async (req, res) => {
   };
 };
 
+  const getReview=async(req,res)=>{
+    const user = await Review.findAll();
+    res.json(user);
+}
 
-module.exports = { postReview };
+module.exports = { postReview,getReview };

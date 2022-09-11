@@ -76,15 +76,10 @@ const { comparePassword, hashPassword } = require("../utils/hashPassword.js");
    
 const putUser = async (req, res, next) => {
   const { id } = req.params;
-  const {name,lastName,email,image,password,passConfirmation,clave} = req.body;
+  const {rol} = req.body;
   try{
   await User.update({
-    name,
-    lastName,
-    email,
-    password,
-    passConfirmation,
-    image,
+  
     rol
   },{where:{id}});
   res.status(200).json({msg:'Usuario actualizado'});
@@ -102,8 +97,8 @@ const olvidePassword = async (req, res) => {
   });
 
   if (!userExists) {
-    const error = new Error(`El usuario con el mail ${email} no existe`);
-    return res.status(400).json({ msg: error.message });
+   
+    return res.status(400).json({ msg: `El usuario con el mail ${email} no existe` });
   }
 
   try {
@@ -143,12 +138,12 @@ const comprobarToken = async (req, res) => {
 
 
 const nuevoPassword = async (req, res) => {
-  const { clave } = req.params;
+  const { clave } = req.body;
   const { password } = req.body;
 
   if (!password) {
-    const error = new Error("Contraseña solicitada no ingresada");
-    return res.status(400).json({ msg: error.message });
+    //const error = new Error("Contraseña solicitada no ingresada");
+    return res.status(400).json({ msg:"Contraseña solicitada no ingresada" });
   }
 
   const user = await User.findOne({
@@ -169,7 +164,21 @@ const nuevoPassword = async (req, res) => {
     return res.status(404).json({ msg: error.message });
   }
 };
-
+// const nuevoPasswords = async (req, res, next) => {
+ 
+//   const {password} = req.body;
+  
+//   const {clave} = req.body;
+//   try{
+//   await User.update({
+//     clave,password
+  
+//   },{where:{clave}});
+//   res.status(200).json({msg:'Usuario actualizado'});
+//   }catch(error){
+//       next(error);
+//   }
+// };
 
   module.exports={
     getalluser,
