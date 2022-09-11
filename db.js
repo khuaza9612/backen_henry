@@ -59,7 +59,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Product, User, Bill, Order, Review, bills_product } = sequelize.models;
+const { Product, User, Bill, Order, Review, BillProduct } = sequelize.models;
 
 
 
@@ -68,17 +68,25 @@ const { Product, User, Bill, Order, Review, bills_product } = sequelize.models;
 // s
 
 
-Bill.hasOne(Order);
-Order.belongsTo(Bill);
+// Bill.hasOne(Order);
+// Order.belongsTo(Bill);
 
-Bill.hasOne(Order);
-Order.belongsTo(Bill);
+// Bill.hasOne(Order);
+// Order.belongsTo(Bill);
 
-User.belongsToMany(Bill, {through: "bills_user", timestamps: false});
-Bill.belongsTo(User, {through: "bills_user", timestamps: false});
+// User.belongsToMany(Bill, {through: "bills_user", timestamps: false});
+// Bill.belongsTo(User, {through: "bills_user", timestamps: false});
 
-Product.belongsToMany(Bill, {through: "bills_product", timestamps: false});
-Bill.belongsToMany(Product, {through: "bills_product", timestamps: false});
+
+User.hasMany(Order);
+Order.belongsTo(User, { through: BillProduct });
+
+Product.belongsToMany(Order, { through: "Order_Line" });
+Order.belongsToMany(Product, { through: "Order_Line" });
+
+
+
+
 
 Review.belongsTo(Product);
 Product.hasMany(Review);

@@ -6,6 +6,7 @@ module.exports = (sequelize) => {
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV1,
+            
             primaryKey: true,
             allowNull: false
         },
@@ -17,6 +18,10 @@ module.exports = (sequelize) => {
             type: DataTypes.ENUM('created', 'processing', 'cancelled', 'completed'),
             allowNull: false
         },
+        pago_total: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+          },
     }, 
     {
         timestamps: false
