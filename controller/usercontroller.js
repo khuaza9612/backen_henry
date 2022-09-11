@@ -77,6 +77,7 @@ const { comparePassword, hashPassword } = require("../utils/hashPassword.js");
    
 const putUser = async (req, res, next) => {
   const { id } = req.params;
+<<<<<<< HEAD
   const {name,lastName,email,image,password,passConfirmation,clave, isBlocked} = req.body;
   try{
   await User.update({
@@ -87,6 +88,13 @@ const putUser = async (req, res, next) => {
     passConfirmation,
     image,
     isBlocked,
+=======
+  const {rol} = req.body;
+  try{
+  await User.update({
+  
+    rol
+>>>>>>> 95d933b3bdd5fb1045c6c46411c615655ef976f3
   },{where:{id}});
   res.status(200).json({msg:'Usuario actualizado'});
   }catch(error){
@@ -103,8 +111,8 @@ const olvidePassword = async (req, res) => {
   });
 
   if (!userExists) {
-    const error = new Error(`El usuario con el mail ${email} no existe`);
-    return res.status(400).json({ msg: error.message });
+   
+    return res.status(400).json({ msg: `El usuario con el mail ${email} no existe` });
   }
 
   try {
@@ -144,12 +152,12 @@ const comprobarToken = async (req, res) => {
 
 
 const nuevoPassword = async (req, res) => {
-  const { clave } = req.params;
+  const { clave } = req.body;
   const { password } = req.body;
 
   if (!password) {
-    const error = new Error("Contraseña solicitada no ingresada");
-    return res.status(400).json({ msg: error.message });
+    //const error = new Error("Contraseña solicitada no ingresada");
+    return res.status(400).json({ msg:"Contraseña solicitada no ingresada" });
   }
 
   const user = await User.findOne({
@@ -170,7 +178,21 @@ const nuevoPassword = async (req, res) => {
     return res.status(404).json({ msg: error.message });
   }
 };
-
+// const nuevoPasswords = async (req, res, next) => {
+ 
+//   const {password} = req.body;
+  
+//   const {clave} = req.body;
+//   try{
+//   await User.update({
+//     clave,password
+  
+//   },{where:{clave}});
+//   res.status(200).json({msg:'Usuario actualizado'});
+//   }catch(error){
+//       next(error);
+//   }
+// };
 
   module.exports={
     getalluser,

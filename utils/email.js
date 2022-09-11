@@ -514,9 +514,11 @@ const emailOlvidePassword=async(data)=>{
         subject:"Welcome to our website",
         text:"Welcome to our website",
         html: 
-        `<p>Hola : ${name}, has solicitado reestablecer tu password en PRO-ROPA</p>
+        `<p>Hola :  You have requested a new password.
+        Access the following link to restore it.
+        Please enter this code and a new password.${clave}  </p>
         <p> Sigue el siguiente enlace para generar un nuevo password: 
-            <a href="http://localhost:3000/api/olvide-password/${clave}">Reestablecer Password</a>
+            <a href="http://localhost:3000/token">Reestablecer Password</a>
         </p>
         `,
     });
