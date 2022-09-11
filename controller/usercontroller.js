@@ -32,7 +32,7 @@ const { comparePassword, hashPassword } = require("../utils/hashPassword.js");
     res.status(200).json({ msg: 'Usuario eliminado' });
   }
   const postUser = async (req, res, next) => {
-    const {name,lastName,email,image,password,passConfirmation,rol,clave} = req.body;
+    const {name,lastName,email,image,password,passConfirmation,rol,clave,isBlocked} = req.body;
   const user = await User.findOne({ where: { email } });
   const comparePass = (a, b) => {
     if (a === b) {
@@ -60,6 +60,7 @@ const { comparePassword, hashPassword } = require("../utils/hashPassword.js");
     image,
     rol,
     clave: generarTokenID(),
+     isBlocked:"false"
   });
   const createdUser = newUser.dataValues;
 
@@ -86,7 +87,6 @@ const putUser = async (req, res, next) => {
     passConfirmation,
     image,
     isBlocked,
-    rol
   },{where:{id}});
   res.status(200).json({msg:'Usuario actualizado'});
   }catch(error){

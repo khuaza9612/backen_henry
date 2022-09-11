@@ -36,6 +36,10 @@ const login = async (req, res, next) => {
   const { email, password } = req.body;
   const user = await User.findOne({ where: { email } });
 
+  if(user.isBlocked === true){
+   return res.status(401).json( {msg: 'User is blocked'}) 
+  }
+
   if (!user) return res.status(401).json({ msg: 'User not found' });
 
     const correct = await validatePassword(password,user.password);
