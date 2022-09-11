@@ -137,7 +137,7 @@ const comprobarToken = async (req, res) => {
 
 
 
-const nuevoPasswords = async (req, res) => {
+const nuevoPassword = async (req, res) => {
   const { clave } = req.body;
   const { password } = req.body;
 
@@ -164,21 +164,21 @@ const nuevoPasswords = async (req, res) => {
     return res.status(404).json({ msg: error.message });
   }
 };
-const nuevoPassword = async (req, res, next) => {
+// const nuevoPasswords = async (req, res, next) => {
  
-  const {password} = req.body;
+//   const {password} = req.body;
   
-  const {clave} = req.body;
-  try{
-  await User.update({
-    clave,password
+//   const {clave} = req.body;
+//   try{
+//   await User.update({
+//     clave,password
   
-  },{where:{clave}});
-  res.status(200).json({msg:'Usuario actualizado'});
-  }catch(error){
-      next(error);
-  }
-};
+//   },{where:{clave}});
+//   res.status(200).json({msg:'Usuario actualizado'});
+//   }catch(error){
+//       next(error);
+//   }
+// };
 
   module.exports={
     getalluser,
