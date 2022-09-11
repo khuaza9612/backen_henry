@@ -49,6 +49,10 @@ module.exports = (sequelize) => {
         values: ['admin', 'user'],
         defaultValue: 'user',
       },
+      isBlocked:{
+        type: DataTypes.BOOLEAN,
+        deaultValue: false,
+      },
       clave: {
         type: DataTypes.STRING,
       },
