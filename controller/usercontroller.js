@@ -77,24 +77,14 @@ const { comparePassword, hashPassword } = require("../utils/hashPassword.js");
    
 const putUser = async (req, res, next) => {
   const { id } = req.params;
-<<<<<<< HEAD
-  const {name,lastName,email,image,password,passConfirmation,clave, isBlocked} = req.body;
-  try{
-  await User.update({
-    name,
-    lastName,
-    email,
-    password,
-    passConfirmation,
-    image,
-    isBlocked,
-=======
+
   const {rol} = req.body;
+  const {isBlocked} = req.body;
   try{
   await User.update({
   
-    rol
->>>>>>> 95d933b3bdd5fb1045c6c46411c615655ef976f3
+    rol,isBlocked
+
   },{where:{id}});
   res.status(200).json({msg:'Usuario actualizado'});
   }catch(error){
