@@ -35,7 +35,6 @@ const postOrder = async (req, res) => {
   try {
     const {
       productId,
-      titleProduct,
       quantity,
       adressShipping,
       orderStatus,
@@ -43,15 +42,22 @@ const postOrder = async (req, res) => {
       userId
     } = req.body;
 
-    const product = await Product.findOne({
-      where: {
-        id: productId
-      }
-    });
+    //console.log(productId);
 
-    console.log(product)
+    let product = [];
+    for (let i = 0; i < productId.length; i++) {
+      product.push(
+        await Product.findOne({
+          where: {
+            id: productId[i]
+          }
+        })
+      )
+    };
+    
+    //console.log('probando array' + product[0].dataValues.title);
     const newOrder = await Order.create({
-      titleProduct: product.dataValues.title,
+      titleProduct: product.map(p => p.dataValues.title).join(", "),
       quantity,
       adressShipping,
       orderStatus,
@@ -62,7 +68,7 @@ const postOrder = async (req, res) => {
     newOrder.addProduct(product)
     res.status(200).send('created')
   } catch (error) {
-    console.log(error)
+    //console.log(error)
     res.status(404).send(error);
   };
 };
