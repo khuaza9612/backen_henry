@@ -29,6 +29,34 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
             allowNull: false,
           },
+          adressNumber:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+          },
+          floor:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+          },
+          department:{
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
+          zipCode:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+          },
+          province:{
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
+          location:{
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
+          dni:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+          },
     }, 
     {
         timestamps: false

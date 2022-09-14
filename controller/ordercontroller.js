@@ -46,21 +46,28 @@ const postOrder = async (req, res) => {
       adressShipping,
       orderStatus,
       totalPrice,
+      adressNumber,
+      floor,
+      department,
+      zipCode,
+      province,
+      location,
+      dni,
       userId
     } = req.body;
 
     //console.log(productId);
 
     let product = [];
-    for (let i = 0; i < productId.length; i++) {
-      product.push(
-        await Product.findOne({
-          where: {
-            id: productId[i]
-          }
-        })
-      )
-    };
+    // for (let i = 0; i < productId.length; i++) {
+    //   product.push(
+    //     await Product.findOne({
+    //       where: {
+    //         id: productId[i]
+    //       }
+    //     })
+    //   )
+    // };
     
     //console.log('probando array' + product[0].dataValues.title);
     const newOrder = await Order.create({
@@ -69,6 +76,13 @@ const postOrder = async (req, res) => {
       adressShipping,
       orderStatus,
       totalPrice,
+      adressNumber,
+      floor,
+      department,
+      zipCode,
+      province,
+      location,
+      dni,
       userId
     });
 
