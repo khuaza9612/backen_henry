@@ -1,35 +1,42 @@
 const { Order, Product, User } = require('../db');
 
-// // // const getOrderById = async (req, res) => {
-// // //     try {
-// // //         const { id } = req.params;
-// // //         const order = await Order.findByPk(id);
 
-// // //         if (!id || !order) return res.status(400).json({ msg: 'No encontramos tu Orden' });
-        
-// // //         res.status(200).json(order);
-// // //     } catch (error) {
-// // //         res.status(500).json(error);
-// // //     };
-// // // };
+const getOrder = async (req, res) => {
+  try {
+    const order = await Order.findAll();
+    res.status(200).json(order);
+  } catch (error) {
+    res.status(404).send('No orders found')
+  };
+};
 
-// // // const putOrder = (req, res, next) => {
-// // //     Order.update({
-// // //         totalAmount: req.body.totalAmount,
-// // //         adressShipping: req.body.adressShipping,
-// // //         ordersInfo: req.body.ordersInfo
-// // //     }, {
-// // //         returning: true, 
-// // //         where: {
-// // //             id: req.params.id
-// // //         } 
-// // //     })
-// // //     .then(function([ rowsUpdate, [updatedOrder] ]) {
-// // //         res.json(updatedOrder)
-// // //     })
-// // //     .catch(next);
-// // // };
+const getOrderById = async (req, res) => {
+  try {
+      const { id } = req.params;
+      const order = await Order.findByPk(id);
 
+      if (!id || !order) return res.status(400).json({ msg: 'No orders found' });
+      
+      return res.status(200).json(order);
+  } catch (error) {
+      res.status(500).json(error);
+  };
+};
+
+const putOrder = (req, res, next) => {
+    Order.update({
+        orderStatus: req.body.orderStatus
+    }, {
+        returning: true, 
+        where: {
+            id: req.params.id
+        } 
+    })
+    .then(function([ rowsUpdate, [updatedOrder] ]) {
+        res.json(updatedOrder)
+    })
+    .catch(next);
+};
 
 const postOrder = async (req, res) => {
   try {
@@ -74,4 +81,9 @@ const postOrder = async (req, res) => {
 };
 
 
-module.exports = { postOrder };
+module.exports = { 
+  getOrder, 
+  getOrderById,
+  putOrder, 
+  postOrder,
+};
