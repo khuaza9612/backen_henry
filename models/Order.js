@@ -4,11 +4,18 @@ module.exports = (sequelize) => {
     sequelize.define('order',
     {
         id: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV1,
-            
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
             primaryKey: true,
             allowNull: false
+        },
+        titleProduct: {
+            type: DataTypes.TEXT,
+            allowNull: false      
+        },
+        quantity: {        
+            type: DataTypes.INTEGER,
+            allowNull: false      
         },
         adressShipping: {
             type: DataTypes.STRING,
@@ -18,7 +25,7 @@ module.exports = (sequelize) => {
             type: DataTypes.ENUM('created', 'processing', 'cancelled', 'completed'),
             allowNull: false
         },
-        pago_total: {
+        totalPrice: {
             type: DataTypes.INTEGER,
             allowNull: false,
           },
