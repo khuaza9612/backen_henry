@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-    sequelize.define('bill',
+    sequelize.define('factura',
     {
         id: {
             type: DataTypes.UUID,
@@ -9,13 +9,7 @@ module.exports = (sequelize) => {
             primaryKey: true,
             allowNull: false
         },
-        billNumber: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            allowNull: false,
-            default: 1
-        },
-        name: {
+            name: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -33,23 +27,31 @@ module.exports = (sequelize) => {
                 }
             }
         },
-        adress: {
+        address: {
             type: DataTypes.STRING,
             allowNull: false
         },
+        
+        
+
+        zip: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        city: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+
         celNumber: {
-            type: DataTypes.BIGINT,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
-        buyersId: {
-            type: DataTypes.BIGINT,
-            allowNull: false
-        },
+       
         totalAmount: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            type: DataTypes.BIGINT,
-            allowNull: false
+            
         },
         observations: {
             type: DataTypes.TEXT,
