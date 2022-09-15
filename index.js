@@ -7,7 +7,7 @@ const { LoadDb } = require('./LoadDb/LoadDb');
 
 config();
 
-const port = process.env.PORT || 3002; // <== You can change the port
+const port = process.env.PORT || 3001; // <== You can change the port
 
 app.use(cors());
 app.use(express.json());

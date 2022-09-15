@@ -33,9 +33,19 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
             allowNull: false,
           },
+          email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isEmail: {
+                    msg: 'El email no es válido',
+                    args: true
+                }
+            }
+        },
     }, 
     {
-        timestamps: false
+        timestamps: true
     });
 };
 

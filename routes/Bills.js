@@ -11,5 +11,5 @@ router.get('/bill', getBill);
 router.get('/bill/:id', getBillById);
 router.put('/bill/:id', putBill);
 router.post('/bill', postbill);
-z
+
 module.exports = router;

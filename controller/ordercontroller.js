@@ -44,12 +44,12 @@ const putOrder = async (req, res, next) => {
   
 
   const putOrders=await Order.update({ 
-    orderStatus }, 
+    orderStatus, email }, 
     { where: { id } })
-    console.log(putOrders)
+    console.log(orderStatus)
 
   const createdUsers = putOrders.dataValues;
-  console.log(putOrders)
+  console.log(orderStatus)
   PutOrderemail({
     
     orderStatus:putOrders.orderStatus,
@@ -92,7 +92,7 @@ const postOrder = async (req, res) => {
       userId
     } = req.body;
 
-    //console.log(productId);
+    // console.log(productId);
 
     let product = [];
     for (let i = 0; i < productId.length; i++) {
