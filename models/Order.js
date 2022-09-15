@@ -29,6 +29,10 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
             allowNull: false,
           },
+          adressNumber:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+          },
     }, 
     {
         timestamps: false
