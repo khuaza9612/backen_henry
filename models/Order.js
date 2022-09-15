@@ -29,10 +29,18 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
             allowNull: false,
           },
-    }, 
-    {
-        timestamps: false
-    });
+          email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isEmail: {
+                    msg: 'El email no es válido',
+                    args: true
+                }
+            }
+        },
+    },
+   );
 };
 
 

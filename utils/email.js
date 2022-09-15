@@ -531,20 +531,17 @@ const emailOlvidePassword=async(data)=>{
 
 
 const Orderemail=async(data)=>{
-    const {titleProduct,totalPrice,userId}=data;
+    const {titleProduct,totalPrice,email,orderStatus}=data;
     const transport = createTransport();
     const info=await transport.sendMail({
         from:"khuazad9612@gmail.com",
-        to:"andresnavia-96@hotmail.com" ,
+        to:email,
         subject:"Welcome to our website",
         text:"Welcome to our website",
         html: 
-        `<p>Hola : ${totalPrice} 
-        Access the following link to restore it.
-        Please enter this code and a new password.${titleProduct}  </p>
-        <p> Sigue el siguiente enlace para generar un nuevo password: 
-            <a href="http://localhost:3000/token">Reestablecer Password</a>
-        </p>
+        `<p> Your order has been ${orderStatus}. The products you ordered are: ${titleProduct}
+        The final price is $${totalPrice}  </p>
+        
         `,
 
         
@@ -555,20 +552,17 @@ const Orderemail=async(data)=>{
 }
 
 const PutOrderemail=async(data)=>{
-    const {orderStatus,userId}=data;
+    const {orderStatus,email,id}=data;
+    console.log(email)
     const transport = createTransport();
     const info=await transport.sendMail({
         from:"khuazad9612@gmail.com",
-        to:"andresnavia-96@hotmail.com" ,
+        to:email,
         subject:"Welcome to our website",
         text:"Welcome to our website",
         html: 
-        `<p>Hola : ${userId} 
-        Access the following link to restore it.
-        Please enter this code and a new password.  </p>
-        <p> Sigue el siguiente enlace para generar un nuevo password: 
-            <a href="http://localhost:3000/token">Reestablecer Password</a>
-        </p>
+        `<p>
+        Your order number  ${id}  has been changed to  ${orderStatus}  </p>
         `,
 
         
