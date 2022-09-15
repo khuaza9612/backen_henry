@@ -480,8 +480,8 @@ const createTransport = () => {
         port: 465,
         secure: true,
         auth: {
-          user: "athenssoport@gmail.com",
-          pass: "imgrduyxazcdntoo",
+          user: "henrypfg11@gmail.com",
+          pass: "chirxatvtficaopa",
         },
         tls: {
             rejectUnauthorized: false
@@ -514,11 +514,64 @@ const emailOlvidePassword=async(data)=>{
         subject:"Welcome to our website",
         text:"Welcome to our website",
         html: 
-        `<p>Hola : ${name}, has solicitado reestablecer tu password en PRO-ROPA</p>
+        `<p>Hola :  You have requested a new password.
+        Access the following link to restore it.
+        Please enter this code and a new password.${clave}  </p>
         <p> Sigue el siguiente enlace para generar un nuevo password: 
-            <a href="http://localhost:3000/api/olvide-password/${clave}">Reestablecer Password</a>
+            <a href="http://localhost:3000/token">Reestablecer Password</a>
         </p>
         `,
+
+        
+    });
+    console.log("Message sent: %s", info.messageId);
+
+     return
+}
+
+
+const Orderemail=async(data)=>{
+    const {titleProduct,totalPrice,userId}=data;
+    const transport = createTransport();
+    const info=await transport.sendMail({
+        from:"khuazad9612@gmail.com",
+        to:"andresnavia-96@hotmail.com" ,
+        subject:"Welcome to our website",
+        text:"Welcome to our website",
+        html: 
+        `<p>Hola : ${totalPrice} 
+        Access the following link to restore it.
+        Please enter this code and a new password.${titleProduct}  </p>
+        <p> Sigue el siguiente enlace para generar un nuevo password: 
+            <a href="http://localhost:3000/token">Reestablecer Password</a>
+        </p>
+        `,
+
+        
+    });
+    console.log("Message sent: %s", info.messageId);
+
+     return
+}
+
+const PutOrderemail=async(data)=>{
+    const {orderStatus,userId}=data;
+    const transport = createTransport();
+    const info=await transport.sendMail({
+        from:"khuazad9612@gmail.com",
+        to:"andresnavia-96@hotmail.com" ,
+        subject:"Welcome to our website",
+        text:"Welcome to our website",
+        html: 
+        `<p>Hola : ${userId} 
+        Access the following link to restore it.
+        Please enter this code and a new password.  </p>
+        <p> Sigue el siguiente enlace para generar un nuevo password: 
+            <a href="http://localhost:3000/token">Reestablecer Password</a>
+        </p>
+        `,
+
+        
     });
     console.log("Message sent: %s", info.messageId);
 
@@ -526,10 +579,11 @@ const emailOlvidePassword=async(data)=>{
 }
 exports.sendEmail=()=>sendEmail();
 exports.emailOlvidePassword=()=>emailOlvidePassword();
+exports.Orderemail=()=>Orderemail();
+exports.PutOrderemail=()=>PutOrderemail();
 
 
-
-module.exports = { sendEmail,emailOlvidePassword};
+module.exports = { sendEmail,emailOlvidePassword,Orderemail,PutOrderemail};
 
 
 // const emailRegistro = async (data) => {
