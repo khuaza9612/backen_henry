@@ -47,7 +47,7 @@ const putOrder = async (req, res, next) => {
     orderStatus }, 
     { where: { id } })
     console.log(putOrders)
-    
+
   const createdUsers = putOrders.dataValues;
   console.log(putOrders)
   PutOrderemail({

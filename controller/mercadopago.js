@@ -16,7 +16,7 @@ let preference = {
             title: 'test',
             quantity:1,
             currency_id: 'ARS',
-            unit_price: 120
+            unit_price: price
 
             
         }
@@ -27,7 +27,7 @@ let preference = {
 
 mercadopago.preferences.create(preference)
 .then(function(response){
-    res.status(200).json(response);
+    res.status(200).json({url: response.body.init_point});
 }).catch(function(error){
     //console.log(error);
 });
