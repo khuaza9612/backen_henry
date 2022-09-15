@@ -14,8 +14,8 @@ app.use(express.json());
 app.use('/api', require('./routes'));
 
 conn.sync({ force: true }).then(() => {
-  app.listen(false, () => {
-   //LoadDb();
+  app.listen(3001, () => {
+   LoadDb();
     console.log('✓ Se conectó a la base de datos');
   })
 });
