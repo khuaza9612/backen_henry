@@ -25,9 +25,15 @@ const getBill = async (req, res) => {
 };
 
 const getBillById = async (req, res) => {
-    const { id } = req.params;
-    const facturas = await Factura.findByPk(id);
-    res.status(200).send(facturas);
+    try {
+        const { id } = req.params;
+        const facturas = await Factura.findByPk(id);
+        if (!id || !facturas) return res.status(400).json({ msg: 'No orders found' });
+        return res.status(200).json(facturas);
+    } catch (error) {
+        res.status(500).json(error);
+    };
+    
 };
 
 const putBill = async (req, res) => {
