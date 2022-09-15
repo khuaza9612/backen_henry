@@ -28,7 +28,7 @@ const createSendToken = (user, statusCode, res) => {
     token,
     data: {
       user,
-    },
+    }
   });
 };
 
@@ -36,28 +36,23 @@ const login = async (req, res, next) => {
   const { email, password } = req.body;
   const user = await User.findOne({ where: { email } });
 
- 
-
   if (!user) return res.status(401).json({ msg: 'User not found' });
 
-    const correct = await validatePassword(password,user.password);
-
-
+  const correct = await validatePassword(password,user.password);
 
   if (!user || !correct) {
     return res.status(401).json({ msg: 'invalid credentials' });
-  }
+  };
 
-  if(user.isBlocked === true){
-    return res.status(401).json( {msg: 'User is blocked'}) 
-   }
-
+  if(user.isBlocked === true) {
+    return res.status(401).json( {msg: 'User is blocked'});
+  };
   createSendToken(user, 200, res);
 };
 
 
 
  module.exports={
-   login,
-   createSendToken
-    };
+  login,
+  createSendToken
+};

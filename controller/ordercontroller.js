@@ -28,7 +28,7 @@ const getOrderUserIds = async (req, res) => {
   try {
     const { id } = req.params;
     const order = await Order.findAll({
-      where:{userId:id}
+      where: { userId:id }
     });
     if (!id || !order) return res.status(400).json({ msg: 'No orders found' });
     return res.status(200).json(order);
@@ -41,24 +41,21 @@ const putOrder = async (req, res, next) => {
   
   const { id } = req.params;
   const { orderStatus } = req.body;
-  
-
   const putOrders=await Order.update({ 
-    orderStatus }, 
-    { where: { id } })
-    console.log(putOrders)
+    orderStatus
+  }, {
+    where: { id } 
+  });
+  console.log(putOrders)
     
   const createdUsers = putOrders.dataValues;
   console.log(putOrders)
-  PutOrderemail({
-    
+  PutOrderemail({  
     orderStatus:putOrders.orderStatus,
   });
   
   res.status(200).json({msg:'Usuario actualizado'});
-  
-
-}
+};
     // const prueba=Order.update({
     //     orderStatus: req.body.orderStatus
     // }, {
@@ -116,18 +113,13 @@ const postOrder = async (req, res) => {
     });
     
     newOrder.addProduct(product)
-    
 
     const createdUser = newOrder.dataValues;
-   
     
     Orderemail({
       totalPrice:newOrder.totalPrice,
       titleProduct:newOrder.titleProduct,
-     
-
-
-    })
+    });
 
     res.status(200).send('created')
   } catch (error) {

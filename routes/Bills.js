@@ -1,9 +1,10 @@
 const { Router } = require('express');
 const router = Router();
 const { 
-    getBill,postbill,getBillById,putBill
-    
-     
+    getBill,
+    postbill,
+    getBillById,
+    putBill
 } = require('../controller/billcontroller');
 
 

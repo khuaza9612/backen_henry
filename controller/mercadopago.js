@@ -17,8 +17,6 @@ let preference = {
             quantity:1,
             currency_id: 'ARS',
             unit_price: 120
-
-            
         }
     ],
     notification_url: "",
@@ -41,4 +39,4 @@ const notificacionOrden = async(req, res) => {
 module.exports={
     notificacionOrden,
     crearOrdem
-     };
+};

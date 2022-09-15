@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
             primaryKey: true,
             allowNull: false
         },
-            name: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -31,9 +31,6 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        
-        
-
         zip: {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -42,16 +39,13 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-
         celNumber: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-       
         totalAmount: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            
         },
         observations: {
             type: DataTypes.TEXT,
