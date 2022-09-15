@@ -1,4 +1,4 @@
-const {User} = require('../db.js');
+const {User, Order} = require('../db.js');
 const { Router } = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -16,17 +16,31 @@ let preference = {
             title: 'test',
             quantity:1,
             currency_id: 'ARS',
-            unit_price: price
-
-            
-        }
+            unit_price: price,
+          
+        },
     ],
-    notification_url: "",
 
+
+        payment_methods:{
+            exluded_payment_types:[
+                {
+                    id: "atm"
+                }
+            ],
+            
+            installments: 6, //cantidad maximo de cuotas
+        },
+        back_urls:{
+             success: "https://athens-theta.vercel.app",
+            failure: "https://athens-theta.vercel.app",
+            pending: "https://athens-theta.vercel.app",
+        }
 };
 
 mercadopago.preferences.create(preference)
 .then(function(response){
+    // {url: response.body.init_point}
     res.status(200).json({url: response.body.init_point});
 }).catch(function(error){
     //console.log(error);
