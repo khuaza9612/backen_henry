@@ -23,12 +23,11 @@ let preference = {
 
 
         payment_methods:{
-            exluded_payment_types:[
+            excluded_payment_methods: [
                 {
-                    id: "atm"
+                  id: "atm"
                 }
             ],
-            
             installments: 6, //cantidad maximo de cuotas
         },
         back_urls:{
@@ -41,7 +40,7 @@ let preference = {
 mercadopago.preferences.create(preference)
 .then(function(response){
     // {url: response.body.init_point}
-    res.status(200).json({url: response.body.init_point});
+    res.status(200).json(response);
 }).catch(function(error){
     //console.log(error);
 });
