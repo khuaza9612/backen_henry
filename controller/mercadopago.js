@@ -1,4 +1,4 @@
-const {User} = require('../db.js');
+const {User, Order} = require('../db.js');
 const { Router } = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -16,16 +16,36 @@ let preference = {
             title: 'test',
             quantity:1,
             currency_id: 'ARS',
+<<<<<<< HEAD
             unit_price: 120
         }
+=======
+            unit_price: price,
+          
+        },
+>>>>>>> 9dfe894cd9c206b071fa68d9106b6fd7aeb1ac1a
     ],
-    notification_url: "",
 
+
+        payment_methods:{
+            excluded_payment_methods: [
+                {
+                  id: "atm"
+                }
+            ],
+            installments: 6, //cantidad maximo de cuotas
+        },
+        back_urls:{
+             success: "https://athens-5qhdwams0-ingmsaac-gmailcom.vercel.app/",
+            failure: "https://athens-5qhdwams0-ingmsaac-gmailcom.vercel.app/",
+            pending: "https://athens-5qhdwams0-ingmsaac-gmailcom.vercel.app/",
+        }
 };
 
 mercadopago.preferences.create(preference)
 .then(function(response){
-    res.status(200).json(response);
+    // {url: response.body.init_point}
+    res.status(200).json({url: response.body.init_point});
 }).catch(function(error){
     //console.log(error);
 });

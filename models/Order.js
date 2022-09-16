@@ -16,21 +16,52 @@ module.exports = (sequelize) => {
         quantity: {        
             type: DataTypes.INTEGER,
             allowNull: false      
+      
         },
-        adressShipping: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
+
         orderStatus:{  
             type: DataTypes.ENUM('created', 'processing', 'cancelled', 'completed'),
-            allowNull: false
+            allowNull: false,
+            defaultValue: 'created'
+
         },
         totalPrice: {
             type: DataTypes.INTEGER,
             allowNull: false,
           },
+<<<<<<< HEAD
     }, 
     {
         timestamps: false
     });
 };
+=======
+          email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isEmail: {
+                    msg: 'El email no es válido',
+                    args: true
+                }
+            }
+        },
+    },
+   );
+};
+
+
+
+// payment_id:{
+//     type: DataTypes.INTEGER,
+//     defaultValue: 0
+// },
+// payment_status:{
+//     type: DataTypes.STRING,
+//     defaultValue: ""
+// },
+// merchant_order_id: {
+//     type: DataTypes.BIGINT,
+//     defaultValue: 0
+// }
+>>>>>>> 9dfe894cd9c206b071fa68d9106b6fd7aeb1ac1a

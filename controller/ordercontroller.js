@@ -40,6 +40,7 @@ const getOrderUserIds = async (req, res) => {
 const putOrder = async (req, res, next) => {
   
   const { id } = req.params;
+<<<<<<< HEAD
   const { orderStatus } = req.body;
   const putOrders=await Order.update({ 
     orderStatus
@@ -52,9 +53,28 @@ const putOrder = async (req, res, next) => {
   console.log(putOrders)
   PutOrderemail({  
     orderStatus:putOrders.orderStatus,
-  });
+=======
+  const { orderStatus,email } = req.body;
   
+
+  const putOrders=await Order.update({ 
+   orderStatus, email }, 
+    { where: { id } })
+    console.log(orderStatus)
+
+
+  const createdUsers =req.body.orderStatus;
+  console.log(createdUsers)
+  PutOrderemail({
+    id:id,
+    email:email,
+
+    orderStatus:createdUsers,
+>>>>>>> 9dfe894cd9c206b071fa68d9106b6fd7aeb1ac1a
+  });
+  console.log(createdUsers)
   res.status(200).json({msg:'Usuario actualizado'});
+<<<<<<< HEAD
 };
     // const prueba=Order.update({
     //     orderStatus: req.body.orderStatus
@@ -77,19 +97,26 @@ const putOrder = async (req, res, next) => {
      
     // });
 
+=======
+
+}
+  
+>>>>>>> 9dfe894cd9c206b071fa68d9106b6fd7aeb1ac1a
 
 const postOrder = async (req, res) => {
   try {
     const {
       productId,
       quantity,
-      adressShipping,
+      
       orderStatus,
       totalPrice,
-      userId
+      userId,
+      email,
+       
     } = req.body;
 
-    //console.log(productId);
+    // console.log(productId);
 
     let product = [];
     for (let i = 0; i < productId.length; i++) {
@@ -106,10 +133,12 @@ const postOrder = async (req, res) => {
     const newOrder = await Order.create({
       titleProduct: product.map(p => p.dataValues.title).join(", "),
       quantity,
-      adressShipping,
+     
       orderStatus,
       totalPrice,
-      userId
+      userId,
+      email,
+    
     });
     
     newOrder.addProduct(product)
@@ -117,9 +146,20 @@ const postOrder = async (req, res) => {
     const createdUser = newOrder.dataValues;
     
     Orderemail({
+       
       totalPrice:newOrder.totalPrice,
       titleProduct:newOrder.titleProduct,
+<<<<<<< HEAD
     });
+=======
+      email:newOrder.email,
+      orderStatus:newOrder.orderStatus,
+      id:newOrder.id,
+     
+
+
+    })
+>>>>>>> 9dfe894cd9c206b071fa68d9106b6fd7aeb1ac1a
 
     res.status(200).send('created')
   } catch (error) {
