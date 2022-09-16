@@ -40,7 +40,7 @@ let preference = {
 mercadopago.preferences.create(preference)
 .then(function(response){
     // {url: response.body.init_point}
-    res.status(200).json(response);
+    res.status(200).json({url: response.body.init_point});
 }).catch(function(error){
     //console.log(error);
 });
