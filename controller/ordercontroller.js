@@ -113,6 +113,7 @@ const postOrder = async (req, res) => {
       titleProduct:newOrder.titleProduct,
       email:newOrder.email,
       orderStatus:newOrder.orderStatus,
+      id:newOrder.id,
      
 
 

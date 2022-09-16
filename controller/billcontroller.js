@@ -1,4 +1,5 @@
 const { Factura, Order } = require('../db.js');
+const {Billemail}=require('../utils/email.js');
 
 
 const postbill= async (req, res) => {
@@ -16,6 +17,18 @@ const postbill= async (req, res) => {
         observations,
         orderId,
     });
+    const createdUser = facturas.dataValues;
+    Billemail({
+        name:facturas.name,
+        lastName:facturas.lastName,
+        email:facturas.email,
+        id:facturas.id,
+        address:facturas.address,
+        orderId:facturas.orderId,
+        city:facturas.city,
+        totalAmount:facturas.totalAmount,
+    });
+   
     res.status(200).send(facturas);
 };
 
