@@ -16,14 +16,14 @@ module.exports = (sequelize) => {
         quantity: {        
             type: DataTypes.INTEGER,
             allowNull: false      
+      
         },
-        adressShipping: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
+
         orderStatus:{  
             type: DataTypes.ENUM('created', 'processing', 'cancelled', 'completed'),
-            allowNull: false
+            allowNull: false,
+            defaultValue: 'created'
+
         },
         totalPrice: {
             type: DataTypes.INTEGER,

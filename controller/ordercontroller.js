@@ -68,7 +68,7 @@ const postOrder = async (req, res) => {
     const {
       productId,
       quantity,
-      adressShipping,
+      
       orderStatus,
       totalPrice,
       userId,
@@ -93,7 +93,7 @@ const postOrder = async (req, res) => {
     const newOrder = await Order.create({
       titleProduct: product.map(p => p.dataValues.title).join(", "),
       quantity,
-      adressShipping,
+     
       orderStatus,
       totalPrice,
       userId,
