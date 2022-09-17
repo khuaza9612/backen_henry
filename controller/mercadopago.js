@@ -16,14 +16,9 @@ let preference = {
             title: 'test',
             quantity:1,
             currency_id: 'ARS',
-<<<<<<< HEAD
-            unit_price: 120
-        }
-=======
             unit_price: price,
           
         },
->>>>>>> 9dfe894cd9c206b071fa68d9106b6fd7aeb1ac1a
     ],
 
 

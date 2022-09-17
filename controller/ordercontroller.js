@@ -40,20 +40,6 @@ const getOrderUserIds = async (req, res) => {
 const putOrder = async (req, res, next) => {
   
   const { id } = req.params;
-<<<<<<< HEAD
-  const { orderStatus } = req.body;
-  const putOrders=await Order.update({ 
-    orderStatus
-  }, {
-    where: { id } 
-  });
-  console.log(putOrders)
-    
-  const createdUsers = putOrders.dataValues;
-  console.log(putOrders)
-  PutOrderemail({  
-    orderStatus:putOrders.orderStatus,
-=======
   const { orderStatus,email } = req.body;
   
 
@@ -70,38 +56,10 @@ const putOrder = async (req, res, next) => {
     email:email,
 
     orderStatus:createdUsers,
->>>>>>> 9dfe894cd9c206b071fa68d9106b6fd7aeb1ac1a
   });
   console.log(createdUsers)
   res.status(200).json({msg:'Usuario actualizado'});
-<<<<<<< HEAD
-};
-    // const prueba=Order.update({
-    //     orderStatus: req.body.orderStatus
-    // }, {
-    //     returning: true, 
-    //     where: {
-    //         id: req.params.id
-    //     } 
-    // })
-   
-    
-    // .then(function([ rowsUpdate, [updatedOrder] ]) {
-    //     res.json(updatedOrder)
-    // })
-    // const createdUser = prueba.dataValues;
-    // PutOrderemail({
-     
-    //   orderStatus: req.body.orderStatus,
-      
-     
-    // });
-
-=======
-
 }
-  
->>>>>>> 9dfe894cd9c206b071fa68d9106b6fd7aeb1ac1a
 
 const postOrder = async (req, res) => {
   try {
@@ -149,9 +107,6 @@ const postOrder = async (req, res) => {
        
       totalPrice:newOrder.totalPrice,
       titleProduct:newOrder.titleProduct,
-<<<<<<< HEAD
-    });
-=======
       email:newOrder.email,
       orderStatus:newOrder.orderStatus,
       id:newOrder.id,
@@ -159,7 +114,6 @@ const postOrder = async (req, res) => {
 
 
     })
->>>>>>> 9dfe894cd9c206b071fa68d9106b6fd7aeb1ac1a
 
     res.status(200).send('created')
   } catch (error) {

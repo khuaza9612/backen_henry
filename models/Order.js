@@ -29,13 +29,6 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
             allowNull: false,
           },
-<<<<<<< HEAD
-    }, 
-    {
-        timestamps: false
-    });
-};
-=======
           email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -64,4 +57,3 @@ module.exports = (sequelize) => {
 //     type: DataTypes.BIGINT,
 //     defaultValue: 0
 // }
->>>>>>> 9dfe894cd9c206b071fa68d9106b6fd7aeb1ac1a
