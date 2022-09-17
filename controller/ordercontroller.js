@@ -28,7 +28,7 @@ const getOrderUserIds = async (req, res) => {
   try {
     const { id } = req.params;
     const order = await Order.findAll({
-      where:{userId:id,orderStatus:'created'}
+      where:{userId:id}
     });
     if (!id || !order) return res.status(400).json({ msg: 'No orders found' });
     return res.status(200).json(order);
