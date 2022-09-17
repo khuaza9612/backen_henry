@@ -28,7 +28,7 @@ const getOrderUserIds = async (req, res) => {
   try {
     const { id } = req.params;
     const order = await Order.findAll({
-      where:{userId:id}
+      where:{userId:id,orderStatus:'created'}
     });
     if (!id || !order) return res.status(400).json({ msg: 'No orders found' });
     return res.status(200).json(order);
@@ -50,11 +50,12 @@ const putOrder = async (req, res, next) => {
 
 
   const createdUsers =req.body.orderStatus;
+  
+  
   console.log(createdUsers)
   PutOrderemail({
     id:id,
     email:email,
-
     orderStatus:createdUsers,
   });
   console.log(createdUsers)
@@ -67,7 +68,8 @@ const postOrder = async (req, res) => {
   try {
     const {
       productId,
-      quantity,
+      quantity, 
+      idProduct,   
       
       orderStatus,
       totalPrice,
@@ -76,7 +78,8 @@ const postOrder = async (req, res) => {
        
     } = req.body;
 
-    // console.log(productId);
+    
+
 
     let product = [];
     for (let i = 0; i < productId.length; i++) {
@@ -88,12 +91,27 @@ const postOrder = async (req, res) => {
         })
       )
     };
+  
+
+    // let products= [];
+    // for (let i = 0; i < productId.length; i++) {
+    //   products.push(
+    //     await Product.findOne({
+    //       where: {
+    //         id: productId[i]
+    //       }
+    //     })
+    //   )
+    // };
+  
     
-    //console.log('probando array' + product[0].dataValues.title);
     const newOrder = await Order.create({
+      
+      idProduct: product.map(p => p.dataValues.id).join(", "),
       titleProduct: product.map(p => p.dataValues.title).join(", "),
-      quantity,
      
+      quantity,
+      
       orderStatus,
       totalPrice,
       userId,
