@@ -13,9 +13,9 @@ app.use(cors());
 app.use(express.json());
 app.use('/api', require('./routes'));
 
-conn.sync({ force:false }).then(() => {
+conn.sync({ force:true }).then(() => {
   app.listen(3001, () => {
-   //oadDb();
+   LoadDb();
     console.log('✓ Se conectó a la base de datos');
   })
 });
