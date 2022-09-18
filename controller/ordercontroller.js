@@ -67,6 +67,7 @@ const putOrder = async (req, res, next) => {
 const postOrder = async (req, res) => {
   try {
     const {
+      
       productId,
       quantity, 
       idProduct,   
@@ -137,7 +138,7 @@ const postOrder = async (req, res) => {
 
     })
 
-    res.status(200).send('created')
+    res.status(200).send(newOrder)
   } catch (error) {
     //console.log(error)
     res.status(404).send(error);
