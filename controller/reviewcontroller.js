@@ -40,7 +40,17 @@ const postReview = async (req, res) => {
     res.json(user);
 }
 
-module.exports = { 
-  postReview,
-  getReview 
+const getReviewById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const review = await Review.findAll({
+      where: { productId: id },
+    });
+    if (!id || !review) return res.status(400).json({ msg: "No reviews found" });
+    return res.status(200).json(review);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 };
+
+module.exports = { postReview,getReview,getReviewById };
