@@ -85,12 +85,13 @@ const postUser = async (req, res, next) => {
    
 const putUser = async (req, res, next) => {
   const { id } = req.params;
-  const {rol} = req.body;
-  const {isBlocked} = req.body;
+  const { name, lastName, rol,isBlocked,image } = req.body;
 
-  try {
-    await User.update({
-      rol,isBlocked
+  
+  try{
+  await User.update({
+  
+    rol,isBlocked,name,lastName,image
     },
     {
       where: { id }
