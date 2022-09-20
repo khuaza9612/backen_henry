@@ -31,7 +31,7 @@ let preference = {
             installments: 6, //cantidad maximo de cuotas
         },
         back_urls:{
-             success: "https://athens-theta.vercel.app/purchase",
+             success: "http://localhost:3000/",
             failure: "https://athens-5qhdwams0-ingmsaac-gmailcom.vercel.app/",
             pending: "https://athens-5qhdwams0-ingmsaac-gmailcom.vercel.app/",
         }
