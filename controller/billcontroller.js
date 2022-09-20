@@ -3,8 +3,18 @@ const {Billemail}=require('../utils/email.js');
 
 
 const postbill= async (req, res) => {
-    const { name, lastName, email, address, zip, city, celNumber, totalAmount, observations,orderId,provincia} = req.body;
-   
+    const { 
+        name, 
+        lastName, 
+        email, 
+        address, 
+        zip, 
+        city, 
+        celNumber, 
+        totalAmount, 
+        observations, 
+        orderId 
+    } = req.body;
     const facturas = await Factura.create({
         name,
         lastName,
@@ -60,10 +70,6 @@ const putBill = async (req, res) => {
     });
     res.status(200).send({ message: 'Factura actualizada' });
 };
-
-
-
-
 
 module.exports = {
     getBill,

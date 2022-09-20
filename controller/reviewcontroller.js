@@ -3,7 +3,6 @@ const { Review, Product } = require("../db");
 
 const postReview = async (req, res) => {
   try {
-    
     const { rating, comment,  userId } = req.body;
     const parsedScore = parseInt(rating);
     const { id } = req.params;
