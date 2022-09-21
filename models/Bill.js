@@ -40,7 +40,11 @@ module.exports = (sequelize) => {
             allowNull: false
         },
         celNumber: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        provincia: {
+            type: DataTypes.STRING,
             allowNull: false
         },
         totalAmount: {

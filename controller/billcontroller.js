@@ -3,18 +3,8 @@ const {Billemail}=require('../utils/email.js');
 
 
 const postbill= async (req, res) => {
-    const { 
-        name, 
-        lastName, 
-        email, 
-        address, 
-        zip, 
-        city, 
-        celNumber, 
-        totalAmount, 
-        observations, 
-        orderId 
-    } = req.body;
+    const { name, lastName, email, address, zip, city, celNumber, totalAmount, observations,orderId,provincia} = req.body;
+   
     const facturas = await Factura.create({
         name,
         lastName,
@@ -26,6 +16,7 @@ const postbill= async (req, res) => {
         totalAmount,
         observations,
         orderId,
+        provincia
     });
     const createdUser = facturas.dataValues;
     Billemail({
