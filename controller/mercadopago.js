@@ -32,8 +32,8 @@ let preference = {
         },
         back_urls:{
              success: "http://localhost:3000/",
-            failure: "https://athens-5qhdwams0-ingmsaac-gmailcom.vercel.app/",
-            pending: "https://athens-5qhdwams0-ingmsaac-gmailcom.vercel.app/",
+            failure: "http://localhost:3000/",
+            pending: "http://localhost:3000/",
         }
 };
 
