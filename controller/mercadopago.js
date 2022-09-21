@@ -6,8 +6,8 @@ const mercadopago = require('mercadopago');
 
 const crearOrdem = async (req, res) => {
 mercadopago.configure({
-    access_token: 'TEST-5921674850639301-091419-f199920e880f57be6ec4b5437ef230e4-1198594613'
-});
+    access_token: 'APP_USR-7419291573046198-092100-8554f3e8313ed93845dc1f328d19dd32-1202275511'
+   });
 const {price}=req.body;
 
 let preference = {
