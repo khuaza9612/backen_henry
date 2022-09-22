@@ -41,7 +41,7 @@ const { comparePassword, hashPassword } = require("../utils/hashPassword.js");
     return false;
   };
   if (user) {
-    return next ('El usario ya existe', 400);
+    return ('El usario ya existe', 400);
   } else if (!comparePass(password, passConfirmation)) {
     return next('Las contraseñas no coinciden', 400);
   }
