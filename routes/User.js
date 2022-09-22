@@ -14,14 +14,14 @@ const verifyToken2=require('../middlewares/authenticate');
 
 
 // route to get all the users
-router.get('/user',verifyToken.ensureAuth,getalluser);
+router.get('/user',getalluser);
 // route to get one user
-router.get('/user/:id',verifyToken.ensureAuth,getUser);
+router.get('/user/:id',getUser);
 // route to delete a user
 router.delete('/user/:id',verifyToken.ensureAuth,deleteUser);
 // route to create a user
 // ruta para obtener todos los usuarios    *
-router.get('/user',verifyToken.ensureAuth,getalluser);
+router.get('/user',getalluser);
 // ruta para obtener un usuario *
 router.get('/user/:id',verifyToken.ensureAuth,getUser);
 // ruta para eliminar un usuario*
