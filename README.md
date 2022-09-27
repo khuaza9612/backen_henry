@@ -18,5 +18,14 @@
 
 <!-- ABOUT THE PROJECT -->
 ## Sobre el Proyecto
-[![Current Version](https://img.shields.io/badge/version-1.0-green.svg)](https://github.com/No-Country/c6-28-vue-node) 
+[![Current Version](https://img.shields.io/badge/version-1.0-green.svg)](https://athens-theta.vercel.app/) 
 [![Live Demo](https://img.shields.io/badge/demo-online-green.svg)]()
+
+Bienvenido a Athens un ecommerce dedicado netamente a la venta de productos deportivo de diferentes deportes 🤗.
+
+Este proyecto nace de la necesidad de encontrar un buen lugar donde comprar las cosas que necesitamos para practicar diferentes deportes y tiene como objetivo tener una manera facil de brindar los productos que ofrecemos.
+
+### Diseño UX/UI
+
+El proyecto lo realizamos y lo logramos con la ausencia de un perfil UX/UI porque la mayoria nos desempeñamos bien como backend o frontend, pero aún asi se logró un buen trabajo gracias al excelente equipo que tenemos, aquí una muestra del diseño inicial que teniamos y que se fue puliendo en cada modificación 👌 [Figma](https://www.figma.com/file/yakoREjsnKFagDZSgrSKeV/Manuel-Benitez's-team-library?node-id=412%3A43)
+![](/figma.png)
