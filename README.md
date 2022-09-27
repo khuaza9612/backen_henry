@@ -3,6 +3,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="./figma.png" alt="Logo" width="100" height="100">
+  <a href="https://github.com/khuaza9612/backen_henry/tree/product">
+    <img src="./portada.png" alt="Logo" width="300" height="300">
   </a>
