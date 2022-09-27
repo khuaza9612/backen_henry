@@ -18,3 +18,5 @@
 
 <!-- ABOUT THE PROJECT -->
 ## Sobre el Proyecto
+[![Current Version](https://img.shields.io/badge/version-1.0-green.svg)](https://github.com/No-Country/c6-28-vue-node) 
+[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)]()
