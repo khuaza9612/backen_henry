@@ -48,3 +48,10 @@ Por parte del equipo de backend se realizó la configuración para la conexión 
 ![Image](./back1.png) <br/>
 ![Image](./back2.png) <br/>
 
+## Link del deploy y Front
+
+https://athens-theta.vercel.app/
+
+<p align="right">(<a href="#top">Arriba</a>)</p>
+
+https://pg-athen.herokuapp.com/
