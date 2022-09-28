@@ -43,8 +43,8 @@ Aqui algunas de las interfaces que realizamos con el equipo de frontend.
 ### BackEnd
 
 Por parte del equipo de backend se realizó la configuración para la conexión a la base de datos, el modelado y el codigo referido a manejo de errores, seguridad y endpoints para ser consumidos por el equipo del FronEnd. se creo la conexión  a mercado pago la cual nos permite ralizar pagos de manera online, se realizo plantillas dinamicas para ser utulizadas en los envios de correos electronicos.
-
-![Image](./back.png) <br/>
+![Image](./ba.png) <br/>
+![Image](./back3.png) <br/>
 ![Image](./back1.png) <br/>
 ![Image](./back2.png) <br/>
 
