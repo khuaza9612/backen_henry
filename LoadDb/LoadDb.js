@@ -18,7 +18,8 @@ async function LoadDb(req, res) {
           status: e.status,
           stock: e.stock,
           genre: e.genre,
-          sport: e.sport
+          sport: e.sport,
+          size: e.size
         };
       });
       ProductModel.forEach(async (e) => {
@@ -34,7 +35,8 @@ async function LoadDb(req, res) {
             status: e.status,
             stock: e.stock,
             genre: e.genre,
-            sport: e.sport
+            sport: e.sport,
+            size: e.size
           },
         });
       });

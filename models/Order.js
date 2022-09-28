@@ -4,24 +4,49 @@ module.exports = (sequelize) => {
     sequelize.define('order',
     {
         id: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV1,
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
             primaryKey: true,
             allowNull: false
         },
-        adressShipping: {
-            type: DataTypes.STRING,
-            allowNull: false
+        titleProduct: {
+            type: DataTypes.TEXT,
+            allowNull: false      
         },
+        idProduct: {
+            type: DataTypes.TEXT,
+            allowNull: true      
+        },
+        quantity: {        
+            type: DataTypes.INTEGER,
+            allowNull: false      
+      
+        },
+
         orderStatus:{  
             type: DataTypes.ENUM('created', 'processing', 'cancelled', 'completed'),
-            allowNull: false
+            allowNull: false,
+            defaultValue: 'created'
+
         },
-    }, 
-    {
-        timestamps: false
-    });
+        totalPrice: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+          },
+          email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isEmail: {
+                    msg: 'El email no es válido',
+                    args: true
+                }
+            }
+        },
+    },
+   );
 };
+
 
 
 // payment_id:{

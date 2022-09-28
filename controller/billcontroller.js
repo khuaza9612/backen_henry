@@ -1,97 +1,73 @@
-const { Bill, Order } = require('../db.js');
+const { Factura, Order } = require('../db.js');
+const {Billemail}=require('../utils/email.js');
 
+
+const postbill= async (req, res) => {
+    const { name, lastName, email, address, zip, city, celNumber, totalAmount, observations,orderId,provincia} = req.body;
+   
+    const facturas = await Factura.create({
+        name,
+        lastName,
+        email,
+        address,
+        zip,
+        city,
+        celNumber,
+        totalAmount,
+        observations,
+        orderId,
+        provincia
+    });
+    const createdUser = facturas.dataValues;
+    Billemail({
+        name:facturas.name,
+        lastName:facturas.lastName,
+        email:facturas.email,
+        id:facturas.id,
+        address:facturas.address,
+        orderId:facturas.orderId,
+        city:facturas.city,
+        totalAmount:facturas.totalAmount,
+    });
+   
+    res.status(200).send(facturas);
+};
 
 const getBill = async (req, res) => {
-    const billNumber = req.query.billNumber;
-    const allBills = await Bill.findAll({
-        include: Order
-    });
-    console.log(allBills)
-    if(billNumber) {
-        const bill = await allBills.filter(e => e.billNumber == billNumber);
-
-        bill.length ?
-        res.status(200).send(bill) :
-        res.status(404).send('No encontramos el número de Factura');
-
-    } else res.status(200).send(allBills);
+    const facturas = await Factura.findAll();
+    res.status(200).send(facturas);
 };
 
 const getBillById = async (req, res) => {
     try {
         const { id } = req.params;
-        const bill = await Bill.findByPk(id);
-
-        if (!id || !bill) return res.status(400).json({ msg: 'No encontramos tu Factura' });
-        
-        res.status(200).json(bill);
+        const facturas = await Factura.findByPk(id);
+        if (!id || !facturas) return res.status(400).json({ msg: 'No orders found' });
+        return res.status(200).json(facturas);
     } catch (error) {
         res.status(500).json(error);
     };
+    
 };
 
-const putBill = (req, res, next) => {
-    Bill.update({
-        observations: req.body.observations
+const putBill = async (req, res) => {
+    const { id } = req.params;
+    const {observations } = req.body;
+    const facturas = await Factura.update({
+        observations
     }, {
-        returning: true, 
-        where: {
-            id: req.params.id
-        } 
-    })
-    .then(function([ rowsUpdate, [updatedBill] ]) {
-        res.json(updatedBill)
-    })
-    .catch(next);
+        where: { id: id }
+    });
+    res.status(200).send({ message: 'Factura actualizada' });
 };
 
-const postBillxOrder = async (req, res) => {
-    try {
-        const {  
-            name, 
-            lastName, 
-            email, 
-            adress, 
-            celNumber, 
-            buyersId, 
-            totalAmount,
-            adressShipping,
-            ordersInfo,
-            observations
-        } = req.body;
 
-        const newBill = await Bill.create(
-            { 
-                name, 
-                lastName, 
-                email, 
-                adress, 
-                celNumber, 
-                buyersId, 
-                totalAmount, 
-                observations
-            }
-        );
 
-        const newOrder = await Order.create(
-            { 
-                adressShipping,
-                ordersInfo
-            },
-            {
-                include: Bill,
-            }
-        );
 
-        res.status(200).send('Created!');
-    } catch (error) {
-        res.status(409).send(error);
-    };
-};
 
 module.exports = {
     getBill,
     getBillById,
-    putBill,
-    postBillxOrder
+    postbill,
+    putBill
 };

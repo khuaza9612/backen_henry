@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-    sequelize.define('bill',
+    sequelize.define('factura',
     {
         id: {
             type: DataTypes.UUID,
@@ -9,13 +9,7 @@ module.exports = (sequelize) => {
             primaryKey: true,
             allowNull: false
         },
-        billNumber: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            allowNull: false,
-            default: 1
-        },
-        name: {
+            name: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -26,7 +20,6 @@ module.exports = (sequelize) => {
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            // unique: true,
             validate: {
                 isEmail: {
                     msg: 'El email no es válido',
@@ -34,25 +27,35 @@ module.exports = (sequelize) => {
                 }
             }
         },
-
-        //agregar producto y cantidad
-        adress: {
+        address: {
             type: DataTypes.STRING,
             allowNull: false
         },
+        
+        
+
+        zip: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        city: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+
         celNumber: {
-            type: DataTypes.BIGINT,
+            type: DataTypes.STRING,
             allowNull: false
         },
-        buyersId: {
-            type: DataTypes.BIGINT,
+        provincia: {
+            type: DataTypes.STRING,
             allowNull: false
         },
+       
         totalAmount: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            type: DataTypes.BIGINT,
-            allowNull: false
+            
         },
         observations: {
             type: DataTypes.TEXT,

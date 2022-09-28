@@ -32,7 +32,7 @@ const { comparePassword, hashPassword } = require("../utils/hashPassword.js");
     res.status(200).json({ msg: 'Usuario eliminado' });
   }
   const postUser = async (req, res, next) => {
-    const {name,lastName,email,image,password,passConfirmation,rol,clave} = req.body;
+    const {name,lastName,email,image,password,passConfirmation,rol,clave,isBlocked} = req.body;
   const user = await User.findOne({ where: { email } });
   const comparePass = (a, b) => {
     if (a === b) {
@@ -41,7 +41,7 @@ const { comparePassword, hashPassword } = require("../utils/hashPassword.js");
     return false;
   };
   if (user) {
-    return next ('El usario ya existe', 400);
+    return ('El usario ya existe', 400);
   } else if (!comparePass(password, passConfirmation)) {
     return next('Las contraseñas no coinciden', 400);
   }
@@ -60,6 +60,7 @@ const { comparePassword, hashPassword } = require("../utils/hashPassword.js");
     image,
     rol,
     clave: generarTokenID(),
+     isBlocked:"false"
   });
   const createdUser = newUser.dataValues;
 
@@ -76,11 +77,14 @@ const { comparePassword, hashPassword } = require("../utils/hashPassword.js");
    
 const putUser = async (req, res, next) => {
   const { id } = req.params;
-  const {rol} = req.body;
+  const { name, lastName, rol,isBlocked,image } = req.body;
+
+  
   try{
   await User.update({
   
-    rol
+    rol,isBlocked,name,lastName,image
+
   },{where:{id}});
   res.status(200).json({msg:'Usuario actualizado'});
   }catch(error){
