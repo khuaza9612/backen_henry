@@ -5,7 +5,7 @@ const path = require('path');
 const Bill = require('./models/Bill');
 
 const {
-  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
+  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME,PORT
 } = process.env;
 let sequelize =
   process.env.NODE_ENV === "production"
@@ -13,7 +13,7 @@ let sequelize =
         database: DB_NAME,
         dialect: "postgres",
         host: DB_HOST,
-        port: 5432,
+        port: PORT,
         username: DB_USER,
         password: DB_PASSWORD,
         pool: {
@@ -32,7 +32,7 @@ let sequelize =
         ssl: true,
       })
     : new Sequelize(
-        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${PORT}/${DB_NAME}`,
         { logging: false, native: false }
       );
 // const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/gym`, {
